@@ -1,0 +1,17 @@
+.main-layout {
+    margin: 36px auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    overflow: hidden;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+    .main-layout {
+        max-width: 768px;
+        margin: 18px auto;
+    }
+}

@@ -1,7 +1,16 @@
-import React from "react"
+import React from "react";
+import logo from "../../../medias/images/logo.png";
 
-const Logo = () => {
-    return <div>Logo</div>
-}
+import "./logo.css";
 
-export default Logo
+const Logo = ({ size, position }) => {
+    return (
+        <img
+            src={logo}
+            className={`logo-default ${position}`}
+            alt="Logo Trouve Ta Voix"
+        />
+    );
+};
+
+export default Logo;

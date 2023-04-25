@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
 const IncomingEventCard = () => {
-    return <div>IncomingEventCard</div>
-}
+    return <div>IncomingEventCard</div>;
+};
 
-export default IncomingEventCard
+export default IncomingEventCard;

@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
 const RoleLabel = () => {
-    return <div>RoleLabel</div>
-}
+    return <div>RoleLabel</div>;
+};
 
-export default RoleLabel
+export default RoleLabel;

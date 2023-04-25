@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
 const WaitingForEventClassCard = () => {
-    return <div>WaitingForEventClassCard</div>
-}
+    return <div>WaitingForEventClassCard</div>;
+};
 
-export default WaitingForEventClassCard
+export default WaitingForEventClassCard;

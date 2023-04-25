@@ -1,0 +1,15 @@
+.logo-default {
+    position: absolute;
+    width: 163px;
+    left: 5%;
+}
+
+@media screen and (max-width: 768px) {
+    .logo-default {
+        width: 130px;
+    }
+    .inline {
+        position: relative;
+        width: 55px;
+    }
+}

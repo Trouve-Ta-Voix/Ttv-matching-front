@@ -1,0 +1,24 @@
+.input-text {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.input-text-label {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+    color: #0c15e4;
+}
+
+.input-text-input {
+    height: 45px;
+    min-width: 300px;
+    border-radius: 16px;
+    border: none;
+    background-color: #ffea7e;
+    padding: 0 20px;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.25);
+}

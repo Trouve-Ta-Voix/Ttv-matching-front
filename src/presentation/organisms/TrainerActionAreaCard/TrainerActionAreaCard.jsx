@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 
 const TrainerActionAreaCard = () => {
-    return <div>TrainerActionAreaCard</div>;
-};
+    return <div>TrainerActionAreaCard</div>
+}
 
-export default TrainerActionAreaCard;
+export default TrainerActionAreaCard

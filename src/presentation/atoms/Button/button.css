@@ -1,0 +1,30 @@
+.button {
+    border-radius: 25px;
+    border: 1px solid;
+    min-width: 200px;
+    min-height: 28px;
+    background: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.button-content {
+    font-family: "Bebas Neue";
+    font-size: 20px;
+}
+
+.blue {
+    border-color: #0c15e4;
+    color: #0c15e4;
+    box-shadow: 5px 5px 0px 1px rgba(12, 21, 228, 1);
+    -webkit-box-shadow: 5px 5px 0px 1px rgba(12, 21, 228, 1);
+    -moz-box-shadow: 5px 5px 0px 1px rgba(12, 21, 228, 1);
+}
+
+.orange {
+    border-color: #fd7826;
+    color: #fd7826;
+    box-shadow: 5px 5px 0px 1px rgba(253, 120, 38, 1);
+    -webkit-box-shadow: 5px 5px 0px 1px rgba(253, 120, 38, 1);
+    -moz-box-shadow: 5px 5px 0px 1px rgba(253, 120, 38, 1);
+}

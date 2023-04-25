@@ -1,0 +1,13 @@
+.paragraph {
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+    color: #0c15e4;
+    font-size: 18px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .paragraph {
+        font-size: 16px;
+    }
+}

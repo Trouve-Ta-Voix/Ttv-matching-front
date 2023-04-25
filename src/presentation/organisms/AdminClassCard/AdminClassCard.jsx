@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 
 const AdminClassCard = () => {
-  return <div>AdminClassCard</div>;
-};
+    return <div>AdminClassCard</div>
+}
 
-export default AdminClassCard;
+export default AdminClassCard

@@ -1,5 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
+import Login from "./presentation/pages/Login"
+import SignUp from "./presentation/pages/SignUp"
+import Profile from "./presentation/pages/Profile"
+import NotFound from "./presentation/pages/NotFound"
 
 import AdminEvent from "./presentation/pages/AdminEvent"
 import AdminProfile from "./presentation/pages/AdminProfile"

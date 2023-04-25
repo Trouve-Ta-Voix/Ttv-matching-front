@@ -1,5 +1,5 @@
-import React from "react";
-import "./text-input.css";
+import React from "react"
+import "./text-input.css"
 
 const TextInput = ({ label, onChange }) => {
     return (
@@ -11,7 +11,7 @@ const TextInput = ({ label, onChange }) => {
                 type="text"
             />
         </div>
-    );
-};
+    )
+}
 
-export default TextInput;
+export default TextInput

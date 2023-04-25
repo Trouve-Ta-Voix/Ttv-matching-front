@@ -1,7 +1,7 @@
-import React from "react";
-import logo from "../../../medias/images/logo.png";
+import React from "react"
+import logo from "../../../medias/images/logo.png"
 
-import "./logo.css";
+import "./logo.css"
 
 const Logo = ({ size, position }) => {
     return (
@@ -10,7 +10,7 @@ const Logo = ({ size, position }) => {
             className={`logo-default ${position}`}
             alt="Logo Trouve Ta Voix"
         />
-    );
-};
+    )
+}
 
-export default Logo;
+export default Logo

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { UserContextProvider } from "./services/context/user"
 
 import Login from "./presentation/pages/Login"
 import SignUp from "./presentation/pages/SignUp"
@@ -20,28 +21,42 @@ import "./shared/reset.css"
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/admin/events" element={<AdminEvent />} />
-                <Route path="/admin/profile" element={<AdminProfile />} />
-                <Route
-                    path="/admin/validation/accounts"
-                    element={<AdminValidationAccounts />}
-                />
-                <Route path="/teacher/classes" element={<TeacherClasses />} />
-                <Route path="/teacher/profile" element={<TeacherProfile />} />
-                <Route path="/trainer/adresses" element={<TrainerAdresses />} />
-                <Route path="/trainer/profile" element={<TrainerProfile />} />
-                <Route
-                    path="/trainer/schedule/summary"
-                    element={<TrainerScheduleSummary />}
-                />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </BrowserRouter>
+        <UserContextProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/admin/events" element={<AdminEvent />} />
+                    <Route path="/admin/profile" element={<AdminProfile />} />
+                    <Route
+                        path="/admin/validation/accounts"
+                        element={<AdminValidationAccounts />}
+                    />
+                    <Route
+                        path="/teacher/classes"
+                        element={<TeacherClasses />}
+                    />
+                    <Route
+                        path="/teacher/profile"
+                        element={<TeacherProfile />}
+                    />
+                    <Route
+                        path="/trainer/adresses"
+                        element={<TrainerAdresses />}
+                    />
+                    <Route
+                        path="/trainer/profile"
+                        element={<TrainerProfile />}
+                    />
+                    <Route
+                        path="/trainer/schedule/summary"
+                        element={<TrainerScheduleSummary />}
+                    />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </BrowserRouter>
+        </UserContextProvider>
     )
 }
 

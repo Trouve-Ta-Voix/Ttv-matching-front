@@ -1,9 +1,10 @@
 import TextInput from "../../molecules/TextInput/TextInput"
 import Button from "../../atoms/Button/Button"
 
-const Form = ({ input, onSubmit, button }) => {
+const Form = ({ input, onSubmit, button, children }) => {
     return (
         <form onSubmit={onSubmit}>
+            {children}
             {input.map(({ value, name, type, placeholder, onChange }) => {
                 return (
                     <TextInput

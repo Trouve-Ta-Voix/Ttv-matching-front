@@ -23,6 +23,7 @@ const signUpTeacher = async ({
     firstName,
     lastName,
     phone,
+    role,
 }) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/auth/signup-teacher`,
@@ -34,7 +35,7 @@ const signUpTeacher = async ({
                 firstName,
                 lastName,
                 phone,
-                role: "teacher",
+                role,
             },
         }
     )
@@ -49,6 +50,7 @@ const signUpTrainer = async ({
     firstName,
     lastName,
     phone,
+    role,
     number,
     street,
     city,
@@ -67,7 +69,7 @@ const signUpTrainer = async ({
                 firstName,
                 lastName,
                 phone,
-                role: "trainer",
+                role,
                 number,
                 street,
                 city,

@@ -4,8 +4,15 @@ import { getUserData } from "../api/User"
 const UserContext = createContext({})
 
 const UserContextProvider = (props) => {
-    const [userData, setUserData] = useState(null)
     const [userToken, setUserToken] = useState("")
+    const [userData, setUserData] = useState(null)
+
+    const fetchUserData = async (token) => {
+        const userData = await getUserData(token)
+        if (userData) {
+            setUserData(userData)
+        }
+    }
 
     useEffect(() => {
         if (
@@ -21,14 +28,8 @@ const UserContextProvider = (props) => {
 
     useEffect(() => {
         if (userToken) {
-            const currentUserData = getUserData(userToken)
-            if (currentUserData) {
-                setUserData(currentUserData)
-            } else {
-                setUserData(null)
-            }
-        } else {
-            localStorage.setItem("userToken", "")
+            localStorage.setItem("userToken", userToken)
+            fetchUserData(userToken)
         }
     }, [userToken])
 

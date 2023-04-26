@@ -9,6 +9,7 @@
     font-weight: 400;
     font-family: "Inter", sans-serif;
     color: #0c15e4;
+    text-transform: capitalize;
 }
 
 .input-text-input {

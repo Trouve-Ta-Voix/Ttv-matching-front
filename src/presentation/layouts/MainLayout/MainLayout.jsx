@@ -1,4 +1,3 @@
-import React from "react"
 import "./main-layout.css"
 
 const MainLayout = ({ children }) => {

@@ -11,6 +11,7 @@ const getUserData = async (token) => {
         }
     )
     const response = await request.json()
+
     return response
 }
 

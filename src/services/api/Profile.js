@@ -2,7 +2,7 @@
 
 const getTrainerAdresses = async (token) => {
     const request = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/profile/adresses`,
+        `${process.env.REACT_APP_BACKEND_URL}/profile/addresses`,
         {
             headers: {
                 "Content-Type": "application/json",

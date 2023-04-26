@@ -1,13 +1,14 @@
 // login
 const login = async ({ email, password }) => {
+    const body = { email, password }
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
         {
             method: "POST",
-            body: {
-                email,
-                password,
+            headers: {
+                "Content-Type": "application/json",
             },
+            body: JSON.stringify(body),
         }
     )
     const response = await request.json()

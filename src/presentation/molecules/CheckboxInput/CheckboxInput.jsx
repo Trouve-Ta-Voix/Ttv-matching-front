@@ -1,7 +1,19 @@
-import React from "react"
+import "./checkbox-input.css"
 
-const CheckboxInput = () => {
-    return <div>CheckboxInput</div>
+const CheckboxInput = ({ label, value, onClick }) => {
+    return (
+        <>
+            <input id={label} type="checkbox" className="checkbox" />
+            <label
+                for={label}
+                value={value}
+                onClick={onClick}
+                className="checkbox-label"
+            >
+                {label}
+            </label>
+        </>
+    )
 }
 
 export default CheckboxInput

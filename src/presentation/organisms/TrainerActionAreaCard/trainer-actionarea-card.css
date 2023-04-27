@@ -1,0 +1,73 @@
+.trainer-actionarea-card {
+    min-height: 93px;
+    width: 660px;
+    background-color: #fd7826;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.trainer-actionarea-card-text {
+    color: #f4efdc;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 23px;
+}
+
+.trainer-actionarea-card-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.trainer-actionarea-card-icon {
+    width: 28px;
+}
+
+.trainer-actionarea-card-icon-car {
+    margin-right: 28px;
+}
+
+.trainer-actionarea-card-icon-trash,
+.trainer-actionarea-card-icon-pencil {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .trainer-actionarea-card {
+        width: 300px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        min-height: 68px;
+        position: relative;
+    }
+    .trainer-actionarea-card-text {
+        height: fit-content;
+        max-width: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: center;
+    }
+    .trainer-actionarea-card-icon {
+        width: 19px;
+    }
+    .trainer-availability-card-icon-trash {
+        position: absolute;
+        left: 3%;
+        top: 30%;
+    }
+    .trainer-actionarea-card-icon-pencil {
+        position: absolute;
+        right: 3%;
+        top: 30%;
+    }
+    .trainer-actionarea-card-icon-car {
+        margin: 10px 0;
+    }
+}

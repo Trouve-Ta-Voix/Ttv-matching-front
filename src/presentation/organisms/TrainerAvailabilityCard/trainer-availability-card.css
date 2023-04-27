@@ -1,0 +1,68 @@
+.trainer-availability-card {
+    min-height: 93px;
+    width: 660px;
+    background-color: #fd7826;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.trainer-availability-card-day {
+    color: #f4efdc;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 41px;
+}
+
+.trainer-availability-card-hours {
+    color: #f4efdc;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 34px;
+}
+
+.trainer-availability-card-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.trainer-availability-card-icon {
+    width: 28px;
+}
+
+@media screen and (max-width: 768px) {
+    .trainer-availability-card {
+        width: 300px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        min-height: 68px;
+        position: relative;
+        padding: 10px;
+    }
+
+    .trainer-availability-card-day {
+        font-size: 39px;
+        margin-bottom: 18px;
+    }
+
+    .trainer-availability-card-hours {
+        font-size: 32px;
+    }
+
+    .trainer-availability-card-icon-pencil {
+        position: absolute;
+        right: 3%;
+        top: 30%;
+    }
+    .trainer-availability-card-icon-trash {
+        position: absolute;
+        left: 3%;
+        top: 30%;
+    }
+}

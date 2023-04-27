@@ -1,0 +1,31 @@
+.rolelabel {
+    border-radius: 25px;
+    min-width: 128px;
+    max-width: fit-content;
+    height: 48px;
+    padding: 0px 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rolelabel-text {
+    font-family: "Inter", sans-serif;
+    color: #ffffff;
+}
+
+.administrateur {
+    background-color: #fd2626;
+}
+
+.enseignant,
+.formateur {
+    background-color: #fd7826;
+}
+
+@media screen and (max-width: 768px) {
+    .rolelabel {
+        width: 99px;
+        height: 31px;
+    }
+}

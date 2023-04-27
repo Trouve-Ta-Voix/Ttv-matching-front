@@ -1,0 +1,29 @@
+.waiting-event-class-card {
+    background-color: #fd7826;
+    width: 500px;
+    min-height: 80px;
+    padding: 12px 20px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #f4efdc;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+}
+
+.waiting-event-class-card-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.waiting-event-class-card-left-school-name {
+    font-size: 23px;
+}
+
+.waiting-event-class-card-right {
+    text-align: end;
+}

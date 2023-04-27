@@ -3,6 +3,8 @@ import { UserContextProvider } from "./services/context/user"
 
 import Login from "./presentation/pages/Login"
 import SignUp from "./presentation/pages/SignUp"
+import SignUpTeacher from "./presentation/pages/SignUpTeacher"
+import SignUpTrainer from "./presentation/pages/SignUpTrainer"
 import Profile from "./presentation/pages/Profile"
 import NotFound from "./presentation/pages/NotFound"
 
@@ -26,6 +28,8 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/signup" element={<SignUp />} />
+                    <Route path="/signup/teacher" element={<SignUpTeacher />} />
+                    <Route path="/signup/trainer" element={<SignUpTrainer />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/admin/events" element={<AdminEvent />} />
                     <Route path="/admin/profile" element={<AdminProfile />} />

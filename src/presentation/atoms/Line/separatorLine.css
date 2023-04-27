@@ -1,0 +1,10 @@
+.separator-line {
+    border: 1px #0c15e4 solid;
+    width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    .separator-line {
+        border: 0px;
+    }
+}

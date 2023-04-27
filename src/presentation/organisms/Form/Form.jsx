@@ -1,23 +1,25 @@
 import TextInput from "../../molecules/TextInput/TextInput"
 import Button from "../../atoms/Button/Button"
 
-const Form = ({ input, onSubmit, button, children }) => {
+const Form = ({ inputs, onSubmit, button, children }) => {
     return (
         <form onSubmit={onSubmit}>
             {children}
-            {input.map(({ value, name, type, placeholder, onChange }) => {
-                return (
-                    <TextInput
-                        key={name}
-                        label={name}
-                        value={value}
-                        type={type}
-                        placeholder={placeholder}
-                        name={name}
-                        onChange={onChange}
-                    />
-                )
-            })}
+            {inputs.map(
+                ({ value, name, label, type, placeholder, onChange }) => {
+                    return (
+                        <TextInput
+                            key={name}
+                            label={label}
+                            value={value}
+                            type={type}
+                            placeholder={placeholder}
+                            name={name}
+                            onChange={onChange}
+                        />
+                    )
+                }
+            )}
             <Button
                 type="submit"
                 color={button.color}

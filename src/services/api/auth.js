@@ -62,6 +62,8 @@ const signUpTrainer = async ({
                 firstName,
                 lastName,
                 phone,
+                name: "Konexio",
+                currentAddress: address,
                 role: "trainer",
             }),
         }

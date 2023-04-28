@@ -15,8 +15,6 @@ const login = async ({ email, password }) => {
     return response
 }
 
-// signup-teacher
-
 const signUpTeacher = async ({
     email,
     password,
@@ -43,41 +41,29 @@ const signUpTeacher = async ({
     return response
 }
 
-// signup-trainer
 const signUpTrainer = async ({
     email,
     password,
     firstName,
     lastName,
     phone,
-    role,
-    number,
-    street,
-    city,
-    zipCode,
-    longitude,
-    latitude,
-    country,
+    address,
 }) => {
     const request = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/signup-teacher`,
+        `${process.env.REACT_APP_BACKEND_URL}/auth/signup-trainer`,
         {
             method: "POST",
-            body: {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
                 email,
                 password,
                 firstName,
                 lastName,
                 phone,
-                role,
-                number,
-                street,
-                city,
-                zipCode,
-                longitude,
-                latitude,
-                country,
-            },
+                role: "trainer",
+            }),
         }
     )
     const response = await request.json()

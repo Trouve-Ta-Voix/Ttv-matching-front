@@ -31,14 +31,16 @@ const Login = () => {
     return (
         <>
             <Logo position="inline" />
-            <Title title="Trouve Ta Voix" />
+
             <MainLayout>
+                <Title title="Trouve Ta Voix" />
                 <Form
                     onSubmit={formik.handleSubmit}
                     button={{ color: "blue", content: "Connexion" }}
-                    input={[
+                    inputs={[
                         {
                             name: "email",
+                            label: "E-Mail",
                             type: "email",
                             value: formik.values.email,
                             placeholder: "Entrez votre email..",
@@ -46,6 +48,7 @@ const Login = () => {
                         },
                         {
                             name: "password",
+                            label: "Mot de Passe",
                             type: "password",
                             value: formik.values.password,
                             onChange: formik.handleChange,

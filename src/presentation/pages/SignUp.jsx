@@ -16,23 +16,21 @@ const SignUp = () => {
     }
 
     return (
-        <>
+        <MainLayout>
             <Logo position="inline" />
-            <MainLayout>
-                <Title title="Bienvenue sur la plateforme d'inscription au parcours Trouve Ta Voix" />
-                <Paragraph content="Pour vous inscrire et nous permettre de vous attribuer un(e) formateur(rice) / une classe, merci de cliquer sur votre profil" />
-                <Button
-                    content="Je suis Formateur·rice"
-                    onClick={navigateTrainer}
-                    color="blue"
-                />
-                <Button
-                    content="Je suis Enseignant·e"
-                    onClick={navigateTeacher}
-                    color="blue"
-                />
-            </MainLayout>
-        </>
+            <Title title="Bienvenue sur la plateforme d'inscription au parcours Trouve Ta Voix" />
+            <Paragraph content="Pour vous inscrire et nous permettre de vous attribuer un(e) formateur(rice) / une classe, merci de cliquer sur votre profil" />
+            <Button
+                content="Je suis Formateur·rice"
+                onClick={navigateTrainer}
+                color="blue"
+            />
+            <Button
+                content="Je suis Enseignant·e"
+                onClick={navigateTeacher}
+                color="blue"
+            />
+        </MainLayout>
     )
 }
 

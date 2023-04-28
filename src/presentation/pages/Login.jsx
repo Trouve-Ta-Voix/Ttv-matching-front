@@ -29,34 +29,31 @@ const Login = () => {
     }, [userData])
 
     return (
-        <>
+        <MainLayout>
             <Logo position="inline" />
-
-            <MainLayout>
-                <Title title="Trouve Ta Voix" />
-                <Form
-                    onSubmit={formik.handleSubmit}
-                    button={{ color: "blue", content: "Connexion" }}
-                    inputs={[
-                        {
-                            name: "email",
-                            label: "E-Mail",
-                            type: "email",
-                            value: formik.values.email,
-                            placeholder: "Entrez votre email..",
-                            onChange: formik.handleChange,
-                        },
-                        {
-                            name: "password",
-                            label: "Mot de Passe",
-                            type: "password",
-                            value: formik.values.password,
-                            onChange: formik.handleChange,
-                        },
-                    ]}
-                />
-            </MainLayout>
-        </>
+            <Title title="Trouve Ta Voix" />
+            <Form
+                onSubmit={formik.handleSubmit}
+                button={{ color: "blue", content: "Connexion" }}
+                inputs={[
+                    {
+                        name: "email",
+                        label: "E-Mail",
+                        type: "email",
+                        value: formik.values.email,
+                        placeholder: "Entrez votre email..",
+                        onChange: formik.handleChange,
+                    },
+                    {
+                        name: "password",
+                        label: "Mot de Passe",
+                        type: "password",
+                        value: formik.values.password,
+                        onChange: formik.handleChange,
+                    },
+                ]}
+            />
+        </MainLayout>
     )
 }
 

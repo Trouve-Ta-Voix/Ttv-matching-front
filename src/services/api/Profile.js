@@ -16,7 +16,7 @@ const getTrainerAdresses = async (token) => {
 
 // get teacher classes
 
-const getTeacherAddresses = async (token) => {
+const getTeacherClasses = async (token) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/profile/classes`,
         {
@@ -30,4 +30,4 @@ const getTeacherAddresses = async (token) => {
     return response
 }
 
-export { getTrainerAdresses, getTeacherAddresses }
+export { getTrainerAdresses, getTeacherClasses }

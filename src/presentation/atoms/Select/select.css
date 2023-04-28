@@ -1,0 +1,47 @@
+.teacher-class-card {
+    width: 670px;
+    height: 50px;
+    background-color: #fd7826;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    font-family: "Bebas Neue", sans-serif;
+    color: #f4efdc;
+    font-size: 23px;
+}
+
+.teacher-class-card-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.teacher-class-card-icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.teacher-class-card-selected {
+    border: 1px solid #181818;
+}
+
+@media screen and (max-width: 768px) {
+    .teacher-class-card {
+        width: 85vw;
+        height: 66px;
+        justify-content: space-between;
+    }
+    .teacher-class-card-icons {
+        gap: 18px;
+    }
+    .teacher-class-card-icon {
+        width: 20px;
+        height: 20px;
+    }
+}

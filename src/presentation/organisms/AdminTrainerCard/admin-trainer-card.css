@@ -1,0 +1,33 @@
+.admin-trainer-card {
+    background-color: #0c15e4;
+    width: 350px;
+    height: 89px;
+    padding: 20px 12px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    color: #f4efdc;
+    cursor: pointer;
+}
+
+.admin-trainer-card-separator {
+    height: 40%;
+    border-left: 1px solid #f4efdc;
+}
+
+@media screen and (max-width: 768px) {
+    .admin-trainer-card {
+        height: 59px;
+        width: 85vw;
+    }
+    .admin-trainer-card-trainer {
+        font-size: 24px;
+    }
+    .admin-trainer-card-availabilities {
+        font-size: 18px;
+    }
+}

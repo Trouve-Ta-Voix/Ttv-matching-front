@@ -1,0 +1,39 @@
+.admin-class-card {
+    background-color: #fd7826;
+    width: 400px;
+    height: 89px;
+    padding: 20px 12px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    color: #f4efdc;
+}
+
+.admin-class-card-right,
+.admin-class-card-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.admin-class-card-left-school-name {
+    font-size: 23px;
+}
+
+.admin-class-card-right {
+    text-align: end;
+}
+
+@media screen and (max-width: 768px) {
+    .admin-class-card {
+        width: 85vw;
+        font-size: 16px;
+    }
+    .admin-class-card-left-school-name {
+        font-size: 16px;
+    }
+}

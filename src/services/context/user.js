@@ -30,6 +30,8 @@ const UserContextProvider = (props) => {
         if (userToken) {
             localStorage.setItem("userToken", userToken)
             fetchUserData(userToken)
+        } else {
+            localStorage.setItem("userToken", "")
         }
     }, [userToken])
 

@@ -5,6 +5,7 @@ import MainLayout from "../layouts/MainLayout/MainLayout"
 import Form from "../organisms/Form/Form"
 import Title from "../atoms/Title/Title"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
+import Logo from "../atoms/Logo/Logo"
 
 const SignUpTeacher = () => {
     const formik = useFormik({
@@ -22,6 +23,7 @@ const SignUpTeacher = () => {
     })
     return (
         <MainLayout>
+            <Logo />
             <Title title="Inscription" />
             <SeparatorLine />
             <Form

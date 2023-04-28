@@ -14,12 +14,12 @@
     color: #ffffff;
 }
 
-.administrateur {
+.admin {
     background-color: #fd2626;
 }
 
-.enseignant,
-.formateur {
+.teacher,
+.trainer {
     background-color: #fd7826;
 }
 

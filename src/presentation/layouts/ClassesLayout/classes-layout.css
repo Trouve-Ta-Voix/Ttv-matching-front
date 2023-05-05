@@ -1,0 +1,7 @@
+.classes-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 50vh;
+    padding: 64px;
+}

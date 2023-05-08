@@ -29,5 +29,23 @@ const getTeacherClasses = async (token) => {
     const response = await request.json()
     return response
 }
+// delete teacher class
 
-export { getTrainerAdresses, getTeacherClasses }
+const deleteTeacherClass = async (token, classId) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/classes/${classId}`,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return { response, status: request.status }
+}
+
+// export
+
+export { getTrainerAdresses, getTeacherClasses, deleteTeacherClass }

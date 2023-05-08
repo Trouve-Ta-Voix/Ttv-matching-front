@@ -29,6 +29,10 @@
     border: 1px solid #212121;
 }
 
+.teacher-hidden-list {
+    display: hidden;
+}
+
 @media screen and (max-width: 768px) {
     .teacher-class-card {
         width: 80%;

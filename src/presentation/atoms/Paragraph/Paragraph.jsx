@@ -2,7 +2,7 @@ import React from "react"
 import "./paragraph.css"
 
 const Paragraph = ({ content }) => {
-    return <h1 className="paragraph">{content}</h1>
+    return <h2 className="paragraph">{content}</h2>
 }
 
 export default Paragraph

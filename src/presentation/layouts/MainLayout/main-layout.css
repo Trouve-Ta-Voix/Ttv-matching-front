@@ -6,7 +6,7 @@
     overflow: hidden;
     align-items: center;
     flex-wrap: wrap;
-    min-height: 100vh;
+    min-height: calc(100vh - 72px);
 }
 
 @media screen and (max-width: 768px) {

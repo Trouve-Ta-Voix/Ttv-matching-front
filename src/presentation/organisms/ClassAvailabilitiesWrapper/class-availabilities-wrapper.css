@@ -1,0 +1,7 @@
+.class-availabilities-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0;
+}

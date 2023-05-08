@@ -14,6 +14,7 @@ import AdminValidationAccounts from "./presentation/pages/AdminValidationAccount
 
 import TeacherClasses from "./presentation/pages/TeacherClasses"
 import TeacherProfile from "./presentation/pages/TeacherProfile"
+import TeacherClassSummary from "./presentation/pages/TeacherClassSummary"
 
 import TrainerAdresses from "./presentation/pages/TrainerAdresses"
 import TrainerProfile from "./presentation/pages/TrainerProfile"
@@ -44,6 +45,10 @@ const App = () => {
                     <Route
                         path="/teacher/profile"
                         element={<TeacherProfile />}
+                    />
+                    <Route
+                        path="/teacher/classes/:classId"
+                        element={<TeacherClassSummary />}
                     />
                     <Route
                         path="/trainer/adresses"

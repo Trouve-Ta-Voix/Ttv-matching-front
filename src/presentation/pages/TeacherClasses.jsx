@@ -33,6 +33,7 @@ const TeacherClasses = () => {
     }
     useEffect(() => {
         fetchClasses()
+        // eslint-disable-next-line
     }, [userToken])
 
     const handleEyeClick = (index) => {

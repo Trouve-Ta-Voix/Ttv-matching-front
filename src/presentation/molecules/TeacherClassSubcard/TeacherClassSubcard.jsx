@@ -8,6 +8,7 @@ const TeacherClassSubcard = ({ availability }) => {
     useEffect(() => {
         const day = findDay(availability)
         setAvailabilityDay(day)
+        // eslint-disable-next-line
     }, [])
 
     return (

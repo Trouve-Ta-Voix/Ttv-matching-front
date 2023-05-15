@@ -1,0 +1,12 @@
+.subtitle {
+    color: #0c15e4;
+    font-family: "Bebas Neue";
+    font-size: 60px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .subtitletitle {
+        font-size: 30px;
+    }
+}

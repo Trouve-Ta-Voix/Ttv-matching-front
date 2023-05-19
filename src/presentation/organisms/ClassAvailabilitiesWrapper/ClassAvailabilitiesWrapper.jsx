@@ -20,6 +20,7 @@ const ClassAvailabilitiesWrapper = ({ classId }) => {
 
     useEffect(() => {
         fetchClassAvailabilities()
+        // eslint-disable-next-line
     }, [])
 
     return (

@@ -1,4 +1,3 @@
-// login
 const login = async ({ email, password }) => {
     const body = { email, password }
     const request = await fetch(

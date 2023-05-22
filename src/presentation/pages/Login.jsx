@@ -30,7 +30,7 @@ const Login = () => {
 
     return (
         <MainLayout>
-            <Logo position="inline" />
+            <Logo position="inline" size="big" />
             <Title title="Trouve Ta Voix" />
             <Form
                 onSubmit={formik.handleSubmit}

@@ -23,7 +23,7 @@ const SignUpTeacher = () => {
     })
     return (
         <MainLayout>
-            <Logo />
+            <Logo position="inline" size="big" />
             <Title title="Inscription" />
             <SeparatorLine />
             <Form

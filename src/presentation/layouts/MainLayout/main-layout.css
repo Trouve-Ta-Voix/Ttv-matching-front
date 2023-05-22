@@ -2,11 +2,13 @@
     margin: 36px auto;
     display: flex;
     flex-direction: column;
+    gap: 36px;
     max-width: 1280px;
     overflow: hidden;
     align-items: center;
     flex-wrap: wrap;
     min-height: calc(100vh - 72px);
+    justify-content: center;
 }
 
 @media screen and (max-width: 768px) {

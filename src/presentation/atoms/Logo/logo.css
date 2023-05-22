@@ -1,7 +1,8 @@
 .logo-default {
-    position: absolute;
+    position: fixed;
     width: 163px;
     left: 5%;
+    top: 5%;
 }
 .hidden {
     display: none;
@@ -13,8 +14,12 @@
         width: 130px;
     }
     .inline {
+        left: 0;
         display: inline;
         position: relative;
         width: 55px;
+    }
+    .big {
+        width: 100px;
     }
 }

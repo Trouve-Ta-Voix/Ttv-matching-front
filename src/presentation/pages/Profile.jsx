@@ -2,7 +2,8 @@ import { useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
 
-import CircularProgress from "@mui/material/CircularProgress"
+import { Container, CircularProgress } from "@mui/material"
+// import CircularProgress from "@mui/material/CircularProgress"
 import MainLayout from "../layouts/MainLayout/MainLayout"
 import Logo from "../atoms/Logo/Logo"
 import Title from "../atoms/Title/Title"
@@ -36,7 +37,7 @@ const Profile = () => {
     } else {
         return (
             <MainLayout>
-                <Logo />
+                <Logo position="inline" size="big" />
                 <RoleLabel role={userData.role} />
                 <Title
                     title={`Bonjour, ${userData.firstName} ${userData.lastName}`}

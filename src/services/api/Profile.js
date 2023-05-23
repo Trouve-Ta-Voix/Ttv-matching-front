@@ -14,6 +14,55 @@ const getTrainerAdresses = async (token) => {
     return response
 }
 
+// get one address 
+
+const getTrainerAdress = async (token, id) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/address/${id}`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
+// create one address
+
+const createAddress = async (value, token) => {
+    const request = await fetch(`${process.env.REACT_APP_BACKEND_URL}/trainer/addresses`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(value),
+    })
+
+    const response = await request.json()
+    return response
+}
+
+// delete trainer address
+
+const deleteTrainerAddress = async (token, id) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/address/${id}`,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return { response, status: request.status }
+}
+
 // get teacher classes
 
 const getTeacherClasses = async (token) => {
@@ -48,4 +97,4 @@ const deleteTeacherClass = async (token, classId) => {
 
 // export
 
-export { getTrainerAdresses, getTeacherClasses, deleteTeacherClass }
+export { getTrainerAdresses, getTeacherClasses, deleteTeacherClass, deleteTrainerAddress, getTrainerAdress, createAddress }

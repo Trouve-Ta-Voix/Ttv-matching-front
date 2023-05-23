@@ -59,7 +59,7 @@ const TeacherClasses = () => {
         <MainLayout>
             <Title title="Mes classes" />
             <Paragraph content="Renseignez ici vos classes" />
-            <SeparatorLine />
+            <SeparatorLine color="blue" />
             <ClassesLayout>
                 {currentClasses?.map((currentClass, i) => {
                     return (

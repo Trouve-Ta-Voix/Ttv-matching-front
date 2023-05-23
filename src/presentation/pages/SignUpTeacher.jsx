@@ -25,7 +25,7 @@ const SignUpTeacher = () => {
         <MainLayout>
             <Logo position="inline" size="big" />
             <Title title="Inscription" />
-            <SeparatorLine />
+            <SeparatorLine color="blue" />
             <Form
                 onSubmit={formik.handleSubmit}
                 button={{ color: "blue", content: "S'inscrire" }}

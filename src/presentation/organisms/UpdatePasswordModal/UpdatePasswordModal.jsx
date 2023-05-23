@@ -38,7 +38,7 @@ const UpdatePasswordModal = ({ onClick }) => {
 
     // render
     return (
-        <div className="update-password-modal">
+        <div className="update-password-modal" onClick={onClick}>
             <div className="box-content container">
                 <Button
                     content="fleche"

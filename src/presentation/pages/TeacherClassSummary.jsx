@@ -25,14 +25,11 @@ const TeacherClassSummary = () => {
             comment: "",
         },
         onSubmit: (values) => {
-            console.log(userToken)
+            updateClassInfo(userToken, classId, values)
         },
     })
     useEffect(() => {
-        const data = fetchClassInfo()
-        if (data) {
-            setClassData(data)
-        }
+        fetchClassInfo()
     }, [])
 
     useEffect(() => {
@@ -47,11 +44,14 @@ const TeacherClassSummary = () => {
     }, [classData])
 
     const handleButtonClick = () => {
-        setIsModalVisible(true)
+        setIsModalVisible(!isModalVisible)
     }
 
     const fetchClassInfo = async () => {
-        await getClassInfo(userToken, classId)
+        const data = await getClassInfo(userToken, classId)
+        if (data) {
+            setClassData(data)
+        }
     }
     const putClassInfo = async () => {
         await updateClassInfo(userToken)
@@ -94,7 +94,7 @@ const TeacherClassSummary = () => {
                         },
                         {
                             name: "comment",
-                            label: "Commentaire",
+                            label: "Commentaires",
                             type: "text",
                             value: formik.values.comment,
                             placeholder: classData.comment,
@@ -108,7 +108,9 @@ const TeacherClassSummary = () => {
                     content="Ajouter une disponibilité"
                     onClick={handleButtonClick}
                 />
-                {isModalVisible && <AddAvailabilityModal />}
+                {isModalVisible && (
+                    <AddAvailabilityModal onClick={handleButtonClick} />
+                )}
             </MainLayout>
         )
     }

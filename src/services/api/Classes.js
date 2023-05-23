@@ -15,7 +15,7 @@ const getTeacherClasseAvailabilities = async (token, classId) => {
 }
 
 // put class informations
-const updateClassInfo = async (token, classId) => {
+const updateClassInfo = async (token, classId, body) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/profile/classes/${classId}`,
         {
@@ -24,6 +24,7 @@ const updateClassInfo = async (token, classId) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
+            body: JSON.stringify(body),
         }
     )
     const response = await request.json()

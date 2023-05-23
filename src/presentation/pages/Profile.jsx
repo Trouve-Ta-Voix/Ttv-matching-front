@@ -10,6 +10,7 @@ import Button from "../atoms/Button/Button"
 import RoleLabel from "../atoms/RoleLabel/RoleLabel"
 
 import { signUpLink } from "../../services/signUpLink/signUpLink"
+import AutocompleteInput from "../molecules/Autocomplete/AutocompleteInput"
 
 const Profile = () => {
     const navigate = useNavigate()
@@ -107,6 +108,7 @@ const Profile = () => {
                     color="orange"
                     onClick={handleLogout}
                 />
+                <AutocompleteInput />
             </MainLayout>
         )
     }

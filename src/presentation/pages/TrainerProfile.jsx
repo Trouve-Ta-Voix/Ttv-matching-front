@@ -32,8 +32,13 @@ const TrainerProfile = () => {
         },
     })
 
-    const handleButtonClick = () => {
-        setIsModalOpen(!isModalOpen)
+    const openModal = () => {
+        setIsModalOpen(true)
+    }
+    const handleButtonClick = (e) => {
+        if (e.target === e.currentTarget) {
+            setIsModalOpen(!isModalOpen)
+        }
     }
 
     useEffect(() => {
@@ -103,7 +108,7 @@ const TrainerProfile = () => {
                     type="button"
                     color="orange"
                     content="Modifier Mot de Passe"
-                    onClick={handleButtonClick}
+                    onClick={openModal}
                 />
                 {isModalOpen && (
                     <UpdatePasswordModal onClick={handleButtonClick} />

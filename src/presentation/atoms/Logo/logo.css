@@ -1,8 +1,9 @@
 .logo-default {
-    position: fixed;
+    position: absolute;
     width: 163px;
     left: 5%;
     top: 5%;
+    cursor: pointer;
 }
 .hidden {
     display: none;

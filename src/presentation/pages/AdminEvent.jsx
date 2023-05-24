@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react"
+import { useEffect, useContext, useState } from "react"
 import { UserContext } from "../../services/context/user"
 import { useNavigate } from "react-router-dom"
 
@@ -11,9 +11,46 @@ import RoleLabel from "../atoms/RoleLabel/RoleLabel"
 import Subtitle from "../atoms/Subtitle/Subtitle"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
 
+import IncomingEventCard from "../organisms/IncomingEventCard/IncomingEventCard"
+import WaitingForEventClassCard from "../organisms/WaitingForEventClassCard/WaitingForEventClassCard"
+
+import { getInactiveEvents, getSelectedEvents } from "../../services/api/Events"
+
 const AdminEvent = () => {
     const navigate = useNavigate()
-    const { userData } = useContext(UserContext)
+    const { userData, userToken } = useContext(UserContext)
+    const [inactives, setInactives] = useState([])
+    const [actives, setActives] = useState([])
+
+    const getAllEvents = async () => {
+        if (userToken) {
+            const fetchedInactives = await getInactiveEvents(userToken)
+            const fetchedSelecteds = await getSelectedEvents(userToken)
+
+            if (fetchedInactives) {
+                const updateInactiveEvents = fetchedInactives.map(
+                    (fetchedInactive) => {
+                        return { ...fetchedInactive, isSelected: false }
+                    }
+                )
+                setInactives(updateInactiveEvents)
+            }
+            if (fetchedSelecteds) {
+                const updateActiveEvents = fetchedSelecteds.map(
+                    (fetchedSelected) => {
+                        return { ...fetchedSelected, isSelected: false }
+                    }
+                )
+                setActives(updateActiveEvents)
+            }
+        }
+    }
+
+    useEffect(() => {
+        getAllEvents()
+    }, [userToken])
+    console.log(inactives)
+
     if (!userData) {
         return (
             <MainLayout>
@@ -73,11 +110,22 @@ const AdminEvent = () => {
                             height: "30vh",
                             overflowY: "scroll",
                         }}
-                    ></Container>
+                    >
+                        {actives
+                            ? actives.map((event) => {
+                                  return (
+                                      <IncomingEventCard
+                                          infos={event}
+                                          key={event.id}
+                                      />
+                                  )
+                              })
+                            : "Wololo"}
+                    </Container>
                 </Container>
                 <Container>
                     <Subtitle
-                        subtitle="Evénements en cours"
+                        subtitle="Classes en attente d’évènement"
                         color="orange"
                         position="left"
                     />
@@ -91,7 +139,18 @@ const AdminEvent = () => {
                             height: "30vh",
                             overflowY: "scroll",
                         }}
-                    ></Container>
+                    >
+                        {inactives
+                            ? inactives.map((event) => {
+                                  return (
+                                      <WaitingForEventClassCard
+                                          infos={event}
+                                          key={event.id}
+                                      />
+                                  )
+                              })
+                            : "Wololo"}
+                    </Container>
                 </Container>
             </MainLayout>
         )

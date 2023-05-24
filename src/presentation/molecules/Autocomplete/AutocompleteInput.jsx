@@ -8,8 +8,8 @@ import { useState, useEffect } from "react"
 import useDebounce from "../../../services/hooks/useDebounce"
 import getAddresses from "../../../services/api/addressAutocomplete"
 
-const AutocompleteInput = () => {
-    const [value, setValue] = useState(null)
+const AutocompleteInput = ({value, setValue}) => {
+    // const [value, setValue] = useState(null)
     const [inputValue, setInputValue] = useState("")
     const [addresses, setAddresses] = useState([])
     const [loading, setLoading] = useState(false)
@@ -19,7 +19,7 @@ const AutocompleteInput = () => {
     const updateAddresses = async () => {
         setLoading(true)
         const data = await getAddresses(inputValue)
-        const properties = data.features.map((feature) => {
+        const properties = data?.features?.map((feature) => {
             return {
                 ...feature.properties,
                 coordinates: {

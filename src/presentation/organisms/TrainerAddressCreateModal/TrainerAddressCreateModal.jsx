@@ -5,6 +5,7 @@ import { useFormik } from "formik"
 import { createAddress } from "../../../services/api/Profile"
 
 import Subtitle from "../../atoms/Subtitle/Subtitle"
+import AutocompleteInput from "../../molecules/Autocomplete/AutocompleteInput"
 import Form from "../Form/Form"
 import Logo from "../../atoms/Logo/Logo"
 // compo fleche retour
@@ -19,11 +20,11 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
             currentAddress: ""
         },
         onSubmit: async (values) => {
-            // const response = await updateUserPassword(userToken, body)
+            const response = await createAddress(userToken, values)
         },
     })
 
-    // render
+    
     return (
         <div className="update-password-modal">
             <div className="box-content container">
@@ -42,16 +43,10 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
                         content: "Valider",
                         type: "submit",
                     }}
-                    inputs={[
-                        {
-                            name: "currentAddress",
-                            label: "Adresse",
-                            type: "password",
-                            value: formik.values.currentAddress,
-                            onChange: formik.handleChange,
-                        },
-                    ]}
-                />
+                    inputs={[]}
+                >
+                   <AutocompleteInput value={formik.values.currentAddress} setValue={formik.handleChange}/> 
+                </Form>
             </div>
         </div>
     )

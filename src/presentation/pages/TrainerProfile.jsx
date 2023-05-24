@@ -29,17 +29,9 @@ const TrainerProfile = () => {
         onSubmit: async (values) => {
             const updateUser = await updateUserInfo(userToken, values)
             setUserData(updateUser)
+            alert("Vos informations ont été mises à jour")
         },
     })
-
-    const openModal = () => {
-        setIsModalOpen(true)
-    }
-    const handleButtonClick = (e) => {
-        if (e.target === e.currentTarget) {
-            setIsModalOpen(!isModalOpen)
-        }
-    }
 
     useEffect(() => {
         if (userData) {
@@ -54,6 +46,17 @@ const TrainerProfile = () => {
         // eslint-disable-next-line
     }, [userData])
 
+    const openModal = () => {
+        setIsModalOpen(true)
+    }
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
+    const handleButtonClick = (e) => {
+        if (e.target === e.currentTarget) {
+            setIsModalOpen(!isModalOpen)
+        }
+    }
     // render
     if (!userData) {
         return (
@@ -111,7 +114,10 @@ const TrainerProfile = () => {
                     onClick={openModal}
                 />
                 {isModalOpen && (
-                    <UpdatePasswordModal onClick={handleButtonClick} />
+                    <UpdatePasswordModal
+                        onClick={handleButtonClick}
+                        closeModal={closeModal}
+                    />
                 )}
             </MainLayout>
         )

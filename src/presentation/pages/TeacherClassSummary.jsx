@@ -34,6 +34,7 @@ const TeacherClassSummary = () => {
     })
     useEffect(() => {
         fetchClassInfo()
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {

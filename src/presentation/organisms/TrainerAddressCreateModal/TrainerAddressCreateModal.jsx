@@ -10,7 +10,7 @@ import Logo from "../../atoms/Logo/Logo"
 // compo fleche retour
 import Button from "../../atoms/Button/Button"
 
-import "./trainer-address-update-modal.css"
+import "./trainer-address-create-modal.css"
 
 const TrainerAddressUpdateModal = ({ onClick }) => {
     const { userToken } = useContext(UserContext)

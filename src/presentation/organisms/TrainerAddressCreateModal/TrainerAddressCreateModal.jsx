@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { UserContext } from "../../../services/context/user"
 import { useFormik } from "formik"
 
-// import { createAddress } from "../../../services/api/Profile"
+import { createAddress } from "../../../services/api/Profile"
 
 import Subtitle from "../../atoms/Subtitle/Subtitle"
 import AutocompleteInput from "../../molecules/Autocomplete/AutocompleteInput"
@@ -21,7 +21,6 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
         },
         onSubmit: async (values) => {
             const response = await createAddress(userToken, values)
-
         },
     })
 

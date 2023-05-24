@@ -30,4 +30,20 @@ const getInactiveEvents = async (token) => {
     return response
 }
 
-export { getSelectedEvents, getInactiveEvents }
+// get inactive events
+const getMatchingAvailability = async (token, availabilityId) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/events/inactive/${availabilityId}`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+
+    return response
+}
+
+export { getSelectedEvents, getInactiveEvents, getMatchingAvailability }

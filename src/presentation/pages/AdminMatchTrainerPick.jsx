@@ -1,6 +1,6 @@
-import { useEffect, useContext } from "react"
+import { useEffect, useContext, useState } from "react"
 import { UserContext } from "../../services/context/user"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 import { CircularProgress, Container } from "@mui/material"
 import MainLayout from "../layouts/MainLayout/MainLayout"
@@ -10,11 +10,33 @@ import Button from "../atoms/Button/Button"
 import RoleLabel from "../atoms/RoleLabel/RoleLabel"
 import Subtitle from "../atoms/Subtitle/Subtitle"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
+import { getMatchingAvailability } from "../../services/api/Events"
+import WaitingForEventClassCard from "../organisms/WaitingForEventClassCard/WaitingForEventClassCard"
 
 const AdminMatchTrainerPick = () => {
+    const params = useParams()
     const navigate = useNavigate()
-    const { userData } = useContext(UserContext)
-    if (!userData) {
+    const { userData, userToken } = useContext(UserContext)
+    const [availability, setAvailability] = useState(null)
+    const availabilityId = params.availabilityId
+
+    const getAvailabilityData = async () => {
+        if (userToken) {
+            const fetchedAvailability = await getMatchingAvailability(
+                userToken,
+                availabilityId
+            )
+
+            setAvailability(fetchedAvailability)
+        }
+    }
+
+    useEffect(() => {
+        getAvailabilityData()
+        console.log(availability)
+    }, [userToken])
+
+    if (!availability) {
         return (
             <MainLayout>
                 <CircularProgress />
@@ -56,6 +78,30 @@ const AdminMatchTrainerPick = () => {
                             right: "0",
                         }}
                     />
+                </Container>
+                <Container
+                    sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "flex-start",
+                    }}
+                >
+                    {availability ? (
+                        <WaitingForEventClassCard
+                            infos={availability}
+                            key={availability.id}
+                        />
+                    ) : (
+                        "Wololo"
+                    )}
+                </Container>
+                <Container>
+                    <Subtitle
+                        subtitle="Formateurs disponibles"
+                        color="blue"
+                        position="left"
+                    />
+                    <SeparatorLine color="blue" size="big" />
                 </Container>
             </MainLayout>
         )

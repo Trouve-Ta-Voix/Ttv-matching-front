@@ -146,6 +146,9 @@ const AdminEvent = () => {
                                       <WaitingForEventClassCard
                                           infos={event}
                                           key={event.id}
+                                          onClick={() => {
+                                              navigate(`./matching/${event.id}`)
+                                          }}
                                       />
                                   )
                               })

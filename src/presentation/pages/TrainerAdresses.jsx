@@ -1,5 +1,6 @@
 import { useEffect, useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import {
     getTrainerAdresses,
     deleteTrainerAddress,
@@ -19,6 +20,7 @@ const TrainerAdresses = () => {
     const { userToken } = useContext(UserContext)
     const [currentAddresses, setCurrentAdresses] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false)
+
     const navigate = useNavigate()
 
     const fetchAddress = async () => {

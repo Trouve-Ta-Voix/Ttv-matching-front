@@ -22,10 +22,6 @@ const AutocompleteInput = ({ value, setValue }) => {
         const properties = data?.features?.map((feature) => {
             return {
                 ...feature.properties,
-                coordinates: {
-                    longitude: feature.geometry.coordinates[0],
-                    latitude: feature.geometry.coordinates[1],
-                },
             }
         })
         setAddresses(properties)
@@ -54,6 +50,7 @@ const AutocompleteInput = ({ value, setValue }) => {
                         setInputValue(newInputValue)
                     }}
                     id="autocomplete-input"
+                    disableClearable
                     options={addresses}
                     sx={{
                         width: {
@@ -62,7 +59,7 @@ const AutocompleteInput = ({ value, setValue }) => {
                         },
                     }}
                     renderInput={(params) => (
-                        <TextField {...params} label="Entrez votre addresse" />
+                        <TextField {...params} label="Entrez votre adresse" />
                     )}
                 />
                 {loading && (

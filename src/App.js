@@ -21,6 +21,7 @@ import TeacherProfile from "./presentation/pages/TeacherProfile"
 import TeacherClassSummary from "./presentation/pages/TeacherClassSummary"
 
 import TrainerAdresses from "./presentation/pages/TrainerAdresses"
+import TrainerAdressesUpdate from "./presentation/pages/TrainerAdressesUpdate"
 import TrainerProfile from "./presentation/pages/TrainerProfile"
 import TrainerScheduleSummary from "./presentation/pages/TrainerScheduleSummary"
 
@@ -58,6 +59,10 @@ const App = () => {
                     <Route
                         path="/trainer/adresses"
                         element={<TrainerAdresses />}
+                    />
+                    <Route
+                        path="/trainer/adresses/:id"
+                        element={<TrainerAdressesUpdate />}
                     />
                     <Route
                         path="/trainer/profile"

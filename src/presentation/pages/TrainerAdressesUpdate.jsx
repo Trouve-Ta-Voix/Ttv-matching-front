@@ -4,7 +4,7 @@ import { useFormik } from "formik"
 
 import {
     updateTrainerAdress,
-    getTrainerAddress
+    getTrainerAddress,
 } from "../../services/api/Profile"
 import { UserContext } from "../../services/context/user"
 
@@ -25,17 +25,16 @@ const TrainerAdresses = () => {
             currentAddress: "",
         },
         onSubmit: async (values) => {
-            const response = await updateTrainerAdress(userToken, values, id)
-            window.location.reload();
+            await updateTrainerAdress(userToken, values, id)
+            fetchAddress()
         },
     })
-    
+
     const fetchAddress = async () => {
         const data = await getTrainerAddress(userToken, id)
         if (data) {
             getTrainerAddress(data)
             setCurrentAddress(data)
-            console.log(id)
         }
     }
 
@@ -44,14 +43,16 @@ const TrainerAdresses = () => {
         // eslint-disable-next-line
     }, [userToken])
 
-    const handleChangeAddress = (data) => {
+    const handleAddressChange = (data) => {
         formik.setFieldValue("currentAddress", data)
     }
 
     return (
         <MainLayout>
             <Title title="Modifier une disponibilité" />
-            <Paragraph content={`Adresse actuelle : ${currentAddress.currentAddress}`}/>
+            <Paragraph
+                content={`Adresse actuelle : ${currentAddress.currentAddress}`}
+            />
             <AvailibilityLayout>
                 <Form
                     onSubmit={formik.handleSubmit}
@@ -64,7 +65,7 @@ const TrainerAdresses = () => {
                 >
                     <AutocompleteInput
                         value={formik.values.currentAddress}
-                        setValue={handleChangeAddress}
+                        setValue={handleAddressChange}
                     />
                 </Form>
             </AvailibilityLayout>

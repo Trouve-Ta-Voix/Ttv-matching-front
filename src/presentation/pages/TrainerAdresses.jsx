@@ -15,6 +15,7 @@ import Paragraph from "../atoms/Paragraph/Paragraph"
 import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
 import TrainerActionAreaCard from "../organisms/TrainerActionAreaCard/TrainerActionAreaCard"
 import TrainerAddressCreateModal from "../organisms/TrainerAddressCreateModal/TrainerAddressCreateModal"
+import Logo from "../atoms/Logo/Logo"
 
 const TrainerAdresses = () => {
     const { userToken } = useContext(UserContext)
@@ -51,9 +52,10 @@ const TrainerAdresses = () => {
 
     return (
         <MainLayout>
+            <Logo position="inline" size="big" />
             <Title title="Zones d'actions" />
             <Paragraph content="Renseignez ici vos adresses, correspondant à votre périmètre d'activité" />
-            <SeparatorLine />
+            <SeparatorLine color="blue" />            
             <AvailibilityLayout>
                 {currentAddresses?.map((currentAddress, i) => {
                         return (

@@ -33,6 +33,7 @@ const SignUpTeacher = () => {
             }
         },
     })
+
     return (
         <MainLayout>
             <Logo position="inline" size="big" />

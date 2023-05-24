@@ -14,6 +14,9 @@ import Form from "../organisms/Form/Form"
 import Title from "../atoms/Title/Title"
 import Paragraph from "../atoms/Paragraph/Paragraph"
 import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
+import SeparatorLine from "../atoms/Line/SeparatorLine"
+import Logo from "../atoms/Logo/Logo"
+
 
 const TrainerAdresses = () => {
     const { userToken } = useContext(UserContext)
@@ -49,10 +52,12 @@ const TrainerAdresses = () => {
 
     return (
         <MainLayout>
+            <Logo position="inline" size="big" />
             <Title title="Modifier une disponibilité" />
             <Paragraph
                 content={`Adresse actuelle : ${currentAddress.currentAddress}`}
             />
+            <SeparatorLine color="blue" />            
             <AvailibilityLayout>
                 <Form
                     onSubmit={formik.handleSubmit}

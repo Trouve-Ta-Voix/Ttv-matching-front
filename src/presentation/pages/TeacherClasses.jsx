@@ -6,6 +6,7 @@ import {
 } from "../../services/api/Profile"
 import { UserContext } from "../../services/context/user"
 
+import { CircularProgress } from "@mui/material"
 import MainLayout from "../layouts/MainLayout/MainLayout"
 import Logo from "../atoms/Logo/Logo"
 import Title from "../atoms/Title/Title"
@@ -69,48 +70,51 @@ const TeacherClasses = () => {
             setIsModalOpen(false)
         }
     }
-
-    return (
-        <MainLayout>
-            <Logo />
-            <Title title="Mes classes" />
-            <Paragraph content="Renseignez ici vos classes" />
-            <SeparatorLine color="blue" />
-            <ClassesLayout>
-                {currentClasses?.map((currentClass, i) => {
-                    return (
-                        <TeacherClassCard
-                            key={currentClass.createdAt}
-                            isSelected={currentClass.isSelected}
-                            classInfos={currentClass}
-                            onEyeClick={handleEyeClick}
-                            onTrashCanClick={handleDeleteClick}
-                            onPenClick={handlePenClick}
-                            index={i}
-                        >
-                            {currentClass.isSelected && (
-                                <ClassAvailabilitiesWrapper
-                                    classId={currentClass.id}
-                                />
-                            )}
-                        </TeacherClassCard>
-                    )
-                })}
-            </ClassesLayout>
-            <Button
-                color="blue"
-                content="Ajouter une classe"
-                onClick={openModal}
-            />
-            {isModalOpen && (
-                <AddClassModal
-                    closeModal={closeModal}
-                    onClick={handleButtonClick}
-                    schoolName={currentClasses[0].school.name}
+    if (currentClasses.length > 0) {
+        return (
+            <MainLayout>
+                <Logo />
+                <Title title="Mes classes" />
+                <Paragraph content="Renseignez ici vos classes" />
+                <SeparatorLine color="blue" />
+                <ClassesLayout>
+                    {currentClasses?.map((currentClass, i) => {
+                        return (
+                            <TeacherClassCard
+                                key={currentClass.createdAt}
+                                isSelected={currentClass.isSelected}
+                                classInfos={currentClass}
+                                onEyeClick={handleEyeClick}
+                                onTrashCanClick={handleDeleteClick}
+                                onPenClick={handlePenClick}
+                                index={i}
+                            >
+                                {currentClass.isSelected && (
+                                    <ClassAvailabilitiesWrapper
+                                        classId={currentClass.id}
+                                    />
+                                )}
+                            </TeacherClassCard>
+                        )
+                    })}
+                </ClassesLayout>
+                <Button
+                    color="blue"
+                    content="Ajouter une classe"
+                    onClick={openModal}
                 />
-            )}
-        </MainLayout>
-    )
+                {isModalOpen && (
+                    <AddClassModal
+                        closeModal={closeModal}
+                        onClick={handleButtonClick}
+                        schoolName={currentClasses[0].school.name}
+                    />
+                )}
+            </MainLayout>
+        )
+    } else {
+        return <CircularProgress />
+    }
 }
 
 export default TeacherClasses

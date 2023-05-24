@@ -2,10 +2,13 @@ import { useFormik } from "formik"
 import { signUpTrainer } from "../../services/api/auth"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"
+import AutocompleteInput from "../molecules/Autocomplete/AutocompleteInput"
 import Form from "../organisms/Form/Form"
 import Title from "../atoms/Title/Title"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
 import Logo from "../atoms/Logo/Logo"
+import Paragraph from "../atoms/Paragraph/Paragraph"
+import TextInput from "../molecules/TextInput/TextInput"
 
 const SignUpTrainer = () => {
     const formik = useFormik({
@@ -26,6 +29,11 @@ const SignUpTrainer = () => {
             }
         },
     })
+
+    const handleChangeAddress = (data) => {
+        formik.setFieldValue("currentAddress", data)
+    }
+
     return (
         <MainLayout>
             <Logo position="inline" size="big" />
@@ -81,16 +89,21 @@ const SignUpTrainer = () => {
                         value: formik.values.confirmPassword,
                         onChange: formik.handleChange,
                     },
-                    {
-                        name: "address",
-                        label: "Adresse",
-                        type: "text",
-                        value: formik.values.address,
-                        placeholder: "Entrez votre adresse..",
-                        onChange: formik.handleChange,
-                    },
+                    // {
+                    //     name: "address",
+                    //     label: "Adresse",
+                    //     value: formik.values.address,
+                    //     placeholder: "Entrez votre adresse..",
+                    //     onChange: formik.handleChange,
+                    // },
                 ]}
-            />
+            >   
+                <p className="input-text-label">Adresse</p>
+                <AutocompleteInput
+                    value={formik.values.currentAddress}
+                    setValue={handleChangeAddress}
+                />
+            </Form>
         </MainLayout>
     )
 }

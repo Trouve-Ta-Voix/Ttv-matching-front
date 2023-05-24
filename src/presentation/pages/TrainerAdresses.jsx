@@ -15,7 +15,6 @@ import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout
 import TrainerActionAreaCard from "../organisms/TrainerActionAreaCard/TrainerActionAreaCard"
 import TrainerAddressCreateModal from "../organisms/TrainerAddressCreateModal/TrainerAddressCreateModal"
 
-
 const TrainerAdresses = () => {
     const { userToken } = useContext(UserContext)
     const [currentAddresses, setCurrentAdresses] = useState([])

@@ -29,18 +29,18 @@ const signUpTeacher = async ({
             headers: {
                 "Content-Type": "application/json",
             },
-            body: {
+            body: JSON.stringify({
                 email,
                 password,
                 firstName,
                 lastName,
                 phone,
-                role,
-            },
+                role: "teacher",
+            }),
         }
     )
     const response = await request.json()
-    return response
+    return { response, status: request.status }
 }
 
 const signUpTrainer = async ({
@@ -49,7 +49,7 @@ const signUpTrainer = async ({
     firstName,
     lastName,
     phone,
-    address,
+    currentAddress,
 }) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/auth/signup-trainer`,
@@ -64,14 +64,13 @@ const signUpTrainer = async ({
                 firstName,
                 lastName,
                 phone,
-                name: "Konexio",
-                currentAddress: address,
+                currentAddress,
                 role: "trainer",
             }),
         }
     )
     const response = await request.json()
-    return response
+    return { response, status: request.status }
 }
 
 export { login, signUpTeacher, signUpTrainer }

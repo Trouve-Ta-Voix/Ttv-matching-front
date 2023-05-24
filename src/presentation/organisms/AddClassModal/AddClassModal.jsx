@@ -3,7 +3,6 @@ import { UserContext } from "../../../services/context/user"
 import { useFormik } from "formik"
 import { createClass } from "../../../services/api/Classes"
 
-import Button from "../../atoms/Button/Button"
 import Arrow from "../../atoms/Arrow/Arrow"
 import Subtitle from "../../atoms/Subtitle/Subtitle"
 import Form from "../Form/Form"

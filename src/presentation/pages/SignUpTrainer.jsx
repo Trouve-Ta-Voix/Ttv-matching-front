@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"
+
 import { useFormik } from "formik"
 import { signUpTrainer } from "../../services/api/auth"
 
@@ -7,10 +9,9 @@ import Form from "../organisms/Form/Form"
 import Title from "../atoms/Title/Title"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
 import Logo from "../atoms/Logo/Logo"
-import Paragraph from "../atoms/Paragraph/Paragraph"
-import TextInput from "../molecules/TextInput/TextInput"
 
 const SignUpTrainer = () => {
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -19,18 +20,25 @@ const SignUpTrainer = () => {
             firstName: "",
             lastName: "",
             phone: "",
-            address: "",
+            currentAddress: "",
         },
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
+            console.log(values)
             if (formik.values.password === formik.values.confirmPassword) {
-                signUpTrainer(values)
+                const response = await signUpTrainer(values)
+                if (response.status === 200) {
+                    alert("Votre compte a été créé")
+                    navigate("/")
+                } else {
+                    alert("Veuillez rééssayer")
+                }
             } else {
                 alert("Les mots de passe ne correspondent pas")
             }
         },
     })
 
-    const handleChangeAddress = (data) => {
+    const handleAddressChange = (data) => {
         formik.setFieldValue("currentAddress", data)
     }
 
@@ -89,19 +97,12 @@ const SignUpTrainer = () => {
                         value: formik.values.confirmPassword,
                         onChange: formik.handleChange,
                     },
-                    // {
-                    //     name: "address",
-                    //     label: "Adresse",
-                    //     value: formik.values.address,
-                    //     placeholder: "Entrez votre adresse..",
-                    //     onChange: formik.handleChange,
-                    // },
                 ]}
-            >   
+            >
                 <p className="input-text-label">Adresse</p>
                 <AutocompleteInput
                     value={formik.values.currentAddress}
-                    setValue={handleChangeAddress}
+                    setValue={handleAddressChange}
                 />
             </Form>
         </MainLayout>

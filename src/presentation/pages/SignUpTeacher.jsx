@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 import { signUpTeacher } from "../../services/api/auth"
 
@@ -8,6 +9,7 @@ import SeparatorLine from "../atoms/Line/SeparatorLine"
 import Logo from "../atoms/Logo/Logo"
 
 const SignUpTeacher = () => {
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -17,8 +19,18 @@ const SignUpTeacher = () => {
             lastName: "",
             phone: "",
         },
-        onSubmit: (values) => {
-            signUpTeacher(values)
+        onSubmit: async (values) => {
+            if (formik.values.password === formik.values.confirmPassword) {
+                const response = await signUpTeacher(values)
+                if (response.status === 200) {
+                    alert("Votre compte a été créé")
+                    navigate("/")
+                } else {
+                    alert("Veuillez rééssayer")
+                }
+            } else {
+                alert("Les mots de passe ne correspondent pas")
+            }
         },
     })
     return (

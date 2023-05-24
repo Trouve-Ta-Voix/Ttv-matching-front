@@ -49,7 +49,6 @@ const AdminEvent = () => {
     useEffect(() => {
         getAllEvents()
     }, [userToken])
-    console.log(inactives)
 
     if (!userData) {
         return (
@@ -146,6 +145,9 @@ const AdminEvent = () => {
                                       <WaitingForEventClassCard
                                           infos={event}
                                           key={event.id}
+                                          onClick={() => {
+                                              navigate(`./matching/${event.id}`)
+                                          }}
                                       />
                                   )
                               })

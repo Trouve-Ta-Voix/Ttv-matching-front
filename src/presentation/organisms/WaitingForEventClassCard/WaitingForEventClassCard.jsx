@@ -1,16 +1,11 @@
 import { useNavigate } from "react-router-dom"
 import "./waiting-for-event-class-card.css"
 
-const WaitingForEventClassCard = ({ infos }) => {
+const WaitingForEventClassCard = ({ infos, onClick }) => {
     const navigate = useNavigate()
 
     return (
-        <div
-            className="waiting-event-class-card"
-            onClick={() => {
-                navigate(`./matching/${infos.id}`)
-            }}
-        >
+        <div className="waiting-event-class-card" onClick={onClick}>
             <div className="waiting-event-class-card-left">
                 <p className="waiting-event-class-card-left-school-name">
                     {infos.class.school.name}

@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { UserContext } from "../../../services/context/user"
 import { useFormik } from "formik"
 
@@ -6,10 +6,9 @@ import { createAddress } from "../../../services/api/Profile"
 
 import Subtitle from "../../atoms/Subtitle/Subtitle"
 import AutocompleteInput from "../../molecules/Autocomplete/AutocompleteInput"
+import Arrow from "../../atoms/Arrow/Arrow"
 import Form from "../Form/Form"
 import Logo from "../../atoms/Logo/Logo"
-// compo fleche retour
-import Button from "../../atoms/Button/Button"
 
 import "./trainer-address-create-modal.css"
 
@@ -21,6 +20,7 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
         },
         onSubmit: async (values) => {
             const response = await createAddress(userToken, values)
+            window.location.reload();
         },
     })
 
@@ -29,13 +29,10 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
     }
 
     return (
-        <div className="update-password-modal">
+        <div className="create-address-modal">
             <div className="box-content container">
-                <Button
-                    content="fleche"
+                <Arrow
                     onClick={onClick}
-                    color="blue"
-                    type="button"
                 />
                 <Logo position="inline" visible="hidden" />
                 <Subtitle subtitle="Créer une zone d'action" />

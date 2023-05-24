@@ -17,14 +17,17 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
     const { userToken } = useContext(UserContext)
     const formik = useFormik({
         initialValues: {
-            currentAddress: ""
+            currentAddress: "",
         },
         onSubmit: async (values) => {
             const response = await createAddress(userToken, values)
         },
     })
 
-    
+    const handleChangeAddress = (data) => {
+        formik.setFieldValue("currentAddress", data)
+    }
+
     return (
         <div className="update-password-modal">
             <div className="box-content container">
@@ -45,7 +48,10 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
                     }}
                     inputs={[]}
                 >
-                   <AutocompleteInput value={formik.values.currentAddress} setValue={formik.handleChange}/> 
+                    <AutocompleteInput
+                        value={formik.values.currentAddress}
+                        setValue={handleChangeAddress}
+                    />
                 </Form>
             </div>
         </div>

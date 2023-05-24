@@ -59,7 +59,7 @@ const TeacherClassSummary = () => {
         }
     }
 
-    const createAvailability = async (classId, body) => {
+    const createAvailability = async (body) => {
         const response = await createClassAvailability(userToken, classId, body)
         return response.status
     }

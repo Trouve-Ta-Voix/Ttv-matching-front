@@ -1,21 +1,40 @@
-import Pencil from "../../../medias/icons/pencil.png"
-import Trash from "../../../medias/icons/trash.png"
-
-import "./trainer-availability-card.css"
+import { useEffect, useState } from "react"
 import {
     findDay,
     translateInMinutes,
     translateTime,
 } from "../../../services/timerange/timerange"
-import { useEffect, useState } from "react"
+import Pencil from "../../../medias/icons/pencil.png"
+import Trash from "../../../medias/icons/trash.png"
+import UpdateAvailabilityModal from "../UpdateAvailabilityModal/UpdateAvailabilityModal"
+import "./trainer-availability-card.css"
 
-const TrainerAvailabilityCard = ({ availability, modify, deletion }) => {
+const TrainerAvailabilityCard = ({
+    availability,
+    onPenClick,
+    onTrashClick,
+}) => {
+    const [isUpdateAvailabilityModalOpen, setIsUpdateAvailabilityModalOpen] =
+        useState(false)
+
     const [availabilityDay, setAvailabilityDay] = useState(null)
     useEffect(() => {
         const day = findDay(availability)
         setAvailabilityDay(day)
         // eslint-disable-next-line
     }, [])
+    const openUpdateAvailabilityModal = () => {
+        setIsUpdateAvailabilityModalOpen(true)
+    }
+    const closeUpdateAvailabilityModal = () => {
+        setIsUpdateAvailabilityModalOpen(false)
+    }
+    const handleUpdateAvailabilityArrowClick = (e) => {
+        if (e.target === e.currentTarget) {
+            setIsUpdateAvailabilityModalOpen(!isUpdateAvailabilityModalOpen)
+        }
+    }
+    const handleModifyAvailability = (availability) => {}
     return (
         <div className="trainer-availability-card">
             <p className="trainer-availability-card-day">
@@ -57,20 +76,25 @@ const TrainerAvailabilityCard = ({ availability, modify, deletion }) => {
 
             <div className="trainer-availability-card-icons">
                 <img
-                    onClick={() => {
-                        modify()
-                    }}
+                    onClick={() => openUpdateAvailabilityModal()}
                     src={Pencil}
                     alt="pencil"
                     className="trainer-availability-card-icon trainer-availability-card-icon-pencil"
                 />
                 <img
-                    onClick={deletion}
+                    onClick={() => onTrashClick()}
                     src={Trash}
                     alt="trash"
                     className="trainer-availability-card-icon trainer-availability-card-icon-trash"
                 />
             </div>
+            {isUpdateAvailabilityModalOpen && (
+                <UpdateAvailabilityModal
+                    onClick={handleUpdateAvailabilityArrowClick}
+                    closeModal={closeUpdateAvailabilityModal}
+                    updateAvailabilityModal={handleModifyAvailability}
+                />
+            )}
         </div>
     )
 }

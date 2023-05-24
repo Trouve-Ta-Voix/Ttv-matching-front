@@ -1,15 +1,16 @@
 import { useContext, useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
 
 import { Container } from "@mui/material"
 import MainLayout from "../layouts/MainLayout/MainLayout"
 import Title from "../atoms/Title/Title"
-import Arrow from "../atoms/Arrow/Arrow"
 import Button from "../atoms/Button/Button"
 import Logo from "../atoms/Logo/Logo"
 import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
 import TrainerAvailabilityCard from "../organisms/TrainerAvailabilityCard/TrainerAvailabilityCard"
+import AddAvailabilityModal from "../organisms/AddAvailabilityModal/AddAvailabilityModal"
+import UpdateAvailabilityModal from "../organisms/UpdateAvailabilityModal/UpdateAvailabilityModal"
 
 import {
     getTrainerAvailabilities,
@@ -25,12 +26,23 @@ import {
 
 const TrainerScheduleSummary = () => {
     const navigate = useNavigate()
+    const { trainerId } = useParams()
     const { userToken, userData, setUserData } = useContext(UserContext)
 
     const [availabilities, setAvailabilities] = useState([])
     const [currentAvailability, setCurrentAvailability] = useState({})
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isCreateAvailabilityModalOpen, setIsCreateAvailabilityModalOpen] =
+        useState(false)
+
     const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        if (userToken) {
+            setLoading(true)
+            fetchTrainerAvailabilities()
+            setLoading(false)
+        }
+    }, [userToken])
 
     ////////////  API CALLS  ////////////
 
@@ -39,6 +51,10 @@ const TrainerScheduleSummary = () => {
         if (response) {
             setAvailabilities(response)
         }
+    }
+    const createAvailability = async (body) => {
+        const response = await createTrainerAvailability(userToken, body)
+        return response.status
     }
 
     const modifyAvailability = async (values) => {
@@ -58,45 +74,28 @@ const TrainerScheduleSummary = () => {
         }
     }
 
-    useEffect(() => {
-        if (userToken) {
-            setLoading(true)
-            fetchTrainerAvailabilities()
-            setLoading(false)
-        }
-    }, [userToken])
-
     ////////////  ACTIONS ////////////
 
-    const openModal = () => {
-        setIsModalOpen(true)
+    const openCreateAvailabilityModal = () => {
+        setIsCreateAvailabilityModalOpen(true)
     }
-
-    const closeModal = () => {
-        setIsModalOpen(false)
+    const closeCreateAvailabilityModal = () => {
+        setIsCreateAvailabilityModalOpen(false)
     }
-
-    const handleButtonClick = (e) => {
+    const handleCreateAvailabilityArrowClick = (e) => {
         if (e.target === e.currentTarget) {
-            setIsModalOpen(!isModalOpen)
+            setIsCreateAvailabilityModalOpen(!isCreateAvailabilityModalOpen)
         }
-    }
-
-    const handleModifyAvailability = (availability) => {
-        setCurrentAvailability(availability)
-        setIsModalOpen(true)
     }
 
     const handleDeleteAvailability = (id) => {
         deleteAvailability(id)
     }
 
+    // render
     return (
         <MainLayout>
-            {console.log(availabilities)}
-            {console.log(currentAvailability)}
             <Logo position="inline" size="big" />
-            <Arrow onClick={() => navigate("/profile")} orientation={"left"} />
             <Title title="Mes disponibilités" />
             <AvailibilityLayout>
                 {loading ? (
@@ -109,10 +108,7 @@ const TrainerScheduleSummary = () => {
                             <TrainerAvailabilityCard
                                 availability={availability}
                                 key={availability.id}
-                                modify={() =>
-                                    handleModifyAvailability(availability)
-                                }
-                                deletion={() =>
+                                onTrashClick={() =>
                                     handleDeleteAvailability(availability.id)
                                 }
                             />
@@ -121,11 +117,18 @@ const TrainerScheduleSummary = () => {
                 )}
             </AvailibilityLayout>
             <Button
-                onClick={openModal}
+                onClick={openCreateAvailabilityModal}
                 content="Créer une disponibilité"
                 color="blue"
             />
-            {isModalOpen && <p>Modal</p>}
+            {isCreateAvailabilityModalOpen && (
+                <AddAvailabilityModal
+                    onClick={handleCreateAvailabilityArrowClick}
+                    createAvailability={createAvailability}
+                    closeModal={closeCreateAvailabilityModal}
+                    getAvailabilities={fetchTrainerAvailabilities}
+                />
+            )}
         </MainLayout>
     )
 }

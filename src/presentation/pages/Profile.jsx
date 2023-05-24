@@ -86,7 +86,9 @@ const Profile = () => {
                             content="Mes disponibilités"
                             color="blue"
                             onClick={() =>
-                                navigate(`/${userData.role}/schedule/summary`)
+                                navigate(
+                                    `/${userData.role}/${userData.id}/schedule/summary`
+                                )
                             }
                         />
                     </>

@@ -47,7 +47,7 @@ const updateTrainerAddress = async (token, id, body) => {
     return response
 }
 
-// create one address
+// create one address for trainer
 
 const createAddress = async (token, body) => {
     const request = await fetch(
@@ -142,12 +142,12 @@ const createTrainerAvailability = async (token, body) => {
         }
     )
     const response = await request.json()
-    return response
+    return { response, status: request.status }
 }
 
-const modifyTrainerAvailability = async (token, body, id) => {
+const modifyTrainerAvailability = async (token, body, trainerId) => {
     const request = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities/${trainerId}`,
         {
             method: "PUT",
             headers: {
@@ -158,7 +158,7 @@ const modifyTrainerAvailability = async (token, body, id) => {
         }
     )
     const response = await request.json()
-    return response
+    return { response, status: request.status }
 }
 
 const deleteTrainerAvailability = async (token, id) => {

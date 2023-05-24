@@ -1,20 +1,19 @@
-import { useFormik } from "formik"
-import { translateInMinutes } from "../../../services/timerange/timerange"
-
 import Subtitle from "../../atoms/Subtitle/Subtitle"
 import Logo from "../../atoms/Logo/Logo"
-import Form from "../Form/Form"
 import Arrow from "../../atoms/Arrow/Arrow"
-import TimePicker from "../../atoms/TimePicker/TimePicker"
+import Form from "../Form/Form"
+import { useFormik } from "formik"
+
+import { translateInMinutes } from "../../../services/timerange/timerange"
+
 import DaySelect from "../../atoms/Select/DaySelect"
+import TimePicker from "../../atoms/TimePicker/TimePicker"
 
-import "./add-availability-modal.css"
-
-const AddAvailabilityModal = ({
+import "./update-availability-modal.css"
+const UpdateAvailabilityModal = ({
     onClick,
-    createAvailability,
     closeModal,
-    getAvailabilities,
+    updateAvailability,
 }) => {
     const formik = useFormik({
         initialValues: {
@@ -28,9 +27,8 @@ const AddAvailabilityModal = ({
                 values.startAvailability,
                 values.endAvailability
             )
-            const status = await createAvailability(availabilityInMinutes)
+            const status = await updateAvailability(availabilityInMinutes)
             if (status === 200) {
-                await getAvailabilities()
                 alert("La disponibilité a été créée")
                 closeModal()
             } else if (status === 412) {
@@ -40,14 +38,12 @@ const AddAvailabilityModal = ({
             }
         },
     })
-
-    // render
     return (
-        <div onClick={onClick} className="add-availability-modal">
+        <div className="update-availability-modal" onClick={onClick}>
             <div className="box-content container">
-                <Arrow onClick={onClick} color="blue" orientation="left" />
+                <Arrow onClick={onClick} orientation="left" />
                 <Logo position="inline" visible="hidden" />
-                <Subtitle subtitle="Créer une disponibilité" color="blue" />
+                <Subtitle subtitle="Modifier la disponibilité" color="blue" />
                 <Form
                     onSubmit={formik.handleSubmit}
                     button={{ color: "blue", content: "Créer" }}
@@ -72,4 +68,4 @@ const AddAvailabilityModal = ({
     )
 }
 
-export default AddAvailabilityModal
+export default UpdateAvailabilityModal

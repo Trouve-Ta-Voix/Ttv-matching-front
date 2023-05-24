@@ -26,6 +26,9 @@ const signUpTeacher = async ({
         `${process.env.REACT_APP_BACKEND_URL}/auth/signup-teacher`,
         {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: {
                 email,
                 password,

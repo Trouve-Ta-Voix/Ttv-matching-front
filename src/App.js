@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { UserContextProvider } from "./services/context/user"
 
-import { LocalizationProvider } from "@mui/x-date-pickers"
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
-import "dayjs/locale/fr"
+// import { LocalizationProvider } from "@mui/x-date-pickers"
+// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
+// import "dayjs/locale/fr"
 
 import Login from "./presentation/pages/Login"
 import SignUp from "./presentation/pages/SignUp"
@@ -29,57 +29,48 @@ import "./shared/reset.css"
 const App = () => {
     return (
         <UserContextProvider>
-            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr">
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Login />} />
-                        <Route path="/signup" element={<SignUp />} />
-                        <Route
-                            path="/signup/teacher"
-                            element={<SignUpTeacher />}
-                        />
-                        <Route
-                            path="/signup/trainer"
-                            element={<SignUpTrainer />}
-                        />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/admin/events" element={<AdminEvent />} />
-                        <Route
-                            path="/admin/profile"
-                            element={<AdminProfile />}
-                        />
-                        <Route
-                            path="/admin/validation/accounts"
-                            element={<AdminValidationAccounts />}
-                        />
-                        <Route
-                            path="/teacher/classes"
-                            element={<TeacherClasses />}
-                        />
-                        <Route
-                            path="/teacher/profile"
-                            element={<TeacherProfile />}
-                        />
-                        <Route
-                            path="/teacher/classes/:classId"
-                            element={<TeacherClassSummary />}
-                        />
-                        <Route
-                            path="/trainer/adresses"
-                            element={<TrainerAdresses />}
-                        />
-                        <Route
-                            path="/trainer/profile"
-                            element={<TrainerProfile />}
-                        />
-                        <Route
-                            path="/trainer/schedule/summary"
-                            element={<TrainerScheduleSummary />}
-                        />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </BrowserRouter>
-            </LocalizationProvider>
+            {/* <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr"> */}
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/signup/teacher" element={<SignUpTeacher />} />
+                    <Route path="/signup/trainer" element={<SignUpTrainer />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/admin/events" element={<AdminEvent />} />
+                    <Route path="/admin/profile" element={<AdminProfile />} />
+                    <Route
+                        path="/admin/validation/accounts"
+                        element={<AdminValidationAccounts />}
+                    />
+                    <Route
+                        path="/teacher/classes"
+                        element={<TeacherClasses />}
+                    />
+                    <Route
+                        path="/teacher/profile"
+                        element={<TeacherProfile />}
+                    />
+                    <Route
+                        path="/teacher/classes/:classId"
+                        element={<TeacherClassSummary />}
+                    />
+                    <Route
+                        path="/trainer/adresses"
+                        element={<TrainerAdresses />}
+                    />
+                    <Route
+                        path="/trainer/profile"
+                        element={<TrainerProfile />}
+                    />
+                    <Route
+                        path="/trainer/schedule/summary"
+                        element={<TrainerScheduleSummary />}
+                    />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </BrowserRouter>
+            {/* </LocalizationProvider> */}
         </UserContextProvider>
     )
 }

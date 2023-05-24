@@ -1,16 +1,17 @@
-import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker"
-import dayjs from "dayjs"
-
-const TimePicker = ({ label, onChange, value }) => {
+const TimePicker = ({ label, onChange, value, name }) => {
     return (
-        <div>
-            <MobileTimePicker
-                minutesStep={5}
-                label={label}
+        <>
+            <label htmlFor={name}>{label}</label>
+            <input
+                type="time"
                 value={value}
                 onChange={(value) => onChange(value)}
+                id={name}
+                name={name}
+                min="08:00"
+                max="19:00"
             />
-        </div>
+        </>
     )
 }
 

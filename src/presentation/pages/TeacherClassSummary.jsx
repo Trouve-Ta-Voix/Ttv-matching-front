@@ -2,7 +2,11 @@ import { useState, useEffect, useContext } from "react"
 import { useParams } from "react-router-dom"
 import { useFormik } from "formik"
 import { UserContext } from "../../services/context/user"
-import { getClassInfo, updateClassInfo } from "../../services/api/Classes"
+import {
+    getClassInfo,
+    updateClassInfo,
+    createClassAvailability,
+} from "../../services/api/Classes"
 import CircularProgress from "@mui/material/CircularProgress"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"
@@ -53,8 +57,10 @@ const TeacherClassSummary = () => {
             setClassData(data)
         }
     }
-    const putClassInfo = async () => {
-        await updateClassInfo(userToken)
+
+    const createAvailability = async (classId, body) => {
+        const response = await createClassAvailability(userToken, classId, body)
+        return response.status
     }
 
     // render
@@ -109,7 +115,10 @@ const TeacherClassSummary = () => {
                     onClick={handleButtonClick}
                 />
                 {isModalVisible && (
-                    <AddAvailabilityModal onClick={handleButtonClick} />
+                    <AddAvailabilityModal
+                        onClick={handleButtonClick}
+                        createAvailability={createAvailability}
+                    />
                 )}
             </MainLayout>
         )

@@ -14,4 +14,60 @@ const getTeacherClasseAvailabilities = async (token, classId) => {
     return response
 }
 
-export { getTeacherClasseAvailabilities }
+// put class informations
+const updateClassInfo = async (token, classId, body) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/classes/${classId}`,
+        {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
+// get class informations
+const getClassInfo = async (token, classId) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/classes/${classId}`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
+// create class availability
+const createClassAvailability = async (token, classId, body) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/classes/${classId}/availabilities`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
+    const response = await request.json()
+    return { response, status: request.status }
+}
+
+// export
+
+export {
+    getTeacherClasseAvailabilities,
+    updateClassInfo,
+    getClassInfo,
+    createClassAvailability,
+}

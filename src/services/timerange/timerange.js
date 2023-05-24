@@ -25,4 +25,14 @@ const translateTime = (startMinutesDay, minutes) => {
     return { hours: currentHours, minutes: currentMinutes }
 }
 
-export { findDay, translateTime }
+const translateInMinutes = (dayValue, startAvailability, endAvailability) => {
+    const startTime = startAvailability.split(":")
+    const endTime = endAvailability.split(":")
+    const startMinute =
+        Number(dayValue) + Number(startTime[0] * 60 + Number(startTime[1]))
+    const endMinute =
+        Number(dayValue) + Number(endTime[0] * 60 + Number(endTime[1]))
+    return { startMinute, endMinute }
+}
+
+export { findDay, translateTime, translateInMinutes }

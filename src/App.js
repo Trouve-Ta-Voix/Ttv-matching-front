@@ -45,7 +45,7 @@ const App = () => {
                         element={<AdminValidationAccounts />}
                     />
                     <Route
-                        path="/admin/events/matching"
+                        path="/admin/events/matching/:availabilityId"
                         element={<AdminMatchTrainerPick />}
                     />
                     <Route

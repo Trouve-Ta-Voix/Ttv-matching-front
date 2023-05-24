@@ -63,6 +63,23 @@ const createClassAvailability = async (token, classId, body) => {
     return { response, status: request.status }
 }
 
+// create class
+const createClass = async (token, body) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/classes`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
+    const response = await request.json()
+    return { response, status: request.status }
+}
+
 // export
 
 export {
@@ -70,4 +87,5 @@ export {
     updateClassInfo,
     getClassInfo,
     createClassAvailability,
+    createClass,
 }

@@ -15,10 +15,12 @@ import Paragraph from "../atoms/Paragraph/Paragraph"
 import TeacherClassCard from "../molecules/TeacherClassCard/TeacherClassCard"
 import ClassAvailabilitiesWrapper from "../organisms/ClassAvailabilitiesWrapper/ClassAvailabilitiesWrapper"
 import ClassesLayout from "../layouts/ClassesLayout/ClassesLayout"
+import AddClassModal from "../organisms/AddClassModal/AddClassModal"
 
 const TeacherClasses = () => {
     const { userToken } = useContext(UserContext)
     const [currentClasses, setCurrentClasses] = useState([])
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const navigate = useNavigate()
 
     const fetchClasses = async () => {
@@ -55,6 +57,18 @@ const TeacherClasses = () => {
     const handlePenClick = (classId) => {
         navigate(`./${classId}`)
     }
+    const openModal = () => {
+        setIsModalOpen(true)
+    }
+    const closeModal = () => {
+        setIsModalOpen(false)
+        fetchClasses()
+    }
+    const handleButtonClick = (e) => {
+        if (e.target === e.currentTarget) {
+            setIsModalOpen(false)
+        }
+    }
 
     return (
         <MainLayout>
@@ -83,7 +97,18 @@ const TeacherClasses = () => {
                     )
                 })}
             </ClassesLayout>
-            <Button color="blue" content="Ajouter une classe" />
+            <Button
+                color="blue"
+                content="Ajouter une classe"
+                onClick={openModal}
+            />
+            {isModalOpen && (
+                <AddClassModal
+                    closeModal={closeModal}
+                    onClick={handleButtonClick}
+                    schoolName={currentClasses[0].school.name}
+                />
+            )}
         </MainLayout>
     )
 }

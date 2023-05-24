@@ -11,6 +11,7 @@ import NotFound from "./presentation/pages/NotFound"
 import AdminEvent from "./presentation/pages/AdminEvent"
 import AdminProfile from "./presentation/pages/AdminProfile"
 import AdminValidationAccounts from "./presentation/pages/AdminValidationAccounts"
+import AdminMatchTrainerPick from "./presentation/pages/AdminMatchTrainerPick"
 
 import TeacherClasses from "./presentation/pages/TeacherClasses"
 import TeacherProfile from "./presentation/pages/TeacherProfile"
@@ -37,6 +38,10 @@ const App = () => {
                     <Route
                         path="/admin/validation/accounts"
                         element={<AdminValidationAccounts />}
+                    />
+                    <Route
+                        path="/admin/events/matching"
+                        element={<AdminMatchTrainerPick />}
                     />
                     <Route
                         path="/teacher/classes"

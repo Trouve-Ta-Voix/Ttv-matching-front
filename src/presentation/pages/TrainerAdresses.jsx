@@ -11,9 +11,9 @@ import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
 import Paragraph from "../atoms/Paragraph/Paragraph"
-import AvailibilityLayout from "../layouts/AvailibilityLayout /AvailibilityLayout"
+import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
 import TrainerActionAreaCard from "../organisms/TrainerActionAreaCard/TrainerActionAreaCard"
-import TrainerAddressUpdateModal from "../organisms/TrainerAddressUpdateModal/TrainerAddressUpdateModal"
+import TrainerAddressCreateModal from "../organisms/TrainerAddressCreateModal/TrainerAddressCreateModal"
 
 
 const TrainerAdresses = () => {
@@ -68,7 +68,7 @@ const TrainerAdresses = () => {
             </AvailibilityLayout>
             <Button color="blue" content="Créer une zone d'action" onClick={handleButtonClick}/> 
             {isModalOpen && (
-                <TrainerAddressUpdateModal onClick={handleButtonClick} />
+                <TrainerAddressCreateModal onClick={handleButtonClick} />
             )}
         </MainLayout>
     )

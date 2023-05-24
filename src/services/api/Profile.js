@@ -32,14 +32,14 @@ const getTrainerAdress = async (token, id) => {
 
 // create one address
 
-const createAddress = async (value, token) => {
+const createAddress = async (token, body) => {
     const request = await fetch(`${process.env.REACT_APP_BACKEND_URL}/trainer/addresses`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(value),
+        body: JSON.stringify(body),
     })
 
     const response = await request.json()

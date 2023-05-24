@@ -4,11 +4,11 @@ import Trash from "../../../medias/icons/trash.png"
 
 import "./trainer-actionarea-card.css"
 
-const TrainerActionAreaCard = ({ hasCar, address }) => {
+const TrainerActionAreaCard = ({ hasCar, address, onPenClick, onTrashCanClick, index }) => {
     return (
         <div className="trainer-actionarea-card">
             <div className="trainer-actionarea-card-text">
-                {address.location}
+                {address}
             </div>
             <div className="trainer-actionarea-card-icons">
                 {hasCar && (
@@ -20,8 +20,8 @@ const TrainerActionAreaCard = ({ hasCar, address }) => {
                 )}
                 <img
                     onClick={() => {
-                        console.log("Modify Address")
-                        // TODO: Remplacer par une redirection vers la page de modif
+                        console.log(index)
+                        onPenClick(index)
                     }}
                     src={Pencil}
                     alt="pencil"
@@ -30,7 +30,7 @@ const TrainerActionAreaCard = ({ hasCar, address }) => {
                 <img
                     onClick={() => {
                         console.log("Delete Address")
-                        // TODO: Remplacer par la suppression de l'addresse
+                        onTrashCanClick(index)
                     }}
                     src={Trash}
                     alt="trash"

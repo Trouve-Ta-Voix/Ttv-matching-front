@@ -7,6 +7,7 @@ import {
 import { UserContext } from "../../services/context/user"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"
+import Logo from "../atoms/Logo/Logo"
 import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
@@ -41,7 +42,7 @@ const TeacherClasses = () => {
         updateClasses.forEach((updateClasse) => {
             updateClasse.isSelected = false
         })
-        updateClasses[index].isSelected = true
+        updateClasses[index].isSelected = !updateClasses[index].isSelected
         setCurrentClasses(updateClasses)
     }
 
@@ -57,6 +58,7 @@ const TeacherClasses = () => {
 
     return (
         <MainLayout>
+            <Logo />
             <Title title="Mes classes" />
             <Paragraph content="Renseignez ici vos classes" />
             <SeparatorLine color="blue" />

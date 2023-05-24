@@ -26,6 +26,7 @@ const Login = () => {
         if (userData) {
             navigate("/profile")
         }
+        // eslint-disable-next-line
     }, [userData])
 
     return (

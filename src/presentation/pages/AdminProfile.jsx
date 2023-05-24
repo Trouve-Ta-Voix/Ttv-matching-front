@@ -31,10 +31,6 @@ const AdminProfile = () => {
         },
     })
 
-    const handleButtonClick = () => {
-        setIsModalOpen(!isModalOpen)
-    }
-
     useEffect(() => {
         if (userData) {
             formik.setValues({
@@ -46,7 +42,17 @@ const AdminProfile = () => {
         }
         // eslint-disable-next-line
     }, [userData])
-
+    const openModal = () => {
+        setIsModalOpen(true)
+    }
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
+    const handleButtonClick = (e) => {
+        if (e.target === e.currentTarget) {
+            setIsModalOpen(!isModalOpen)
+        }
+    }
     // render
     if (!userData) {
         return (
@@ -93,10 +99,13 @@ const AdminProfile = () => {
                     type="button"
                     color="orange"
                     content="Modifier Mot de Passe"
-                    onClick={handleButtonClick}
+                    onClick={openModal}
                 />
                 {isModalOpen && (
-                    <UpdatePasswordModal onClick={handleButtonClick} />
+                    <UpdatePasswordModal
+                        onClick={handleButtonClick}
+                        closeModal={closeModal}
+                    />
                 )}
             </MainLayout>
         )

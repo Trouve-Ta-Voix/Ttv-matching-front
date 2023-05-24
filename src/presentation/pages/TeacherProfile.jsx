@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
 
 import { updateUserInfo } from "../../services/api/User"
@@ -31,9 +31,16 @@ const TeacherProfile = () => {
             setUserData(updateUser)
         },
     })
-
-    const handleButtonClick = () => {
-        setIsModalOpen(!isModalOpen)
+    const openModal = () => {
+        setIsModalOpen(true)
+    }
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
+    const handleButtonClick = (e) => {
+        if (e.target === e.currentTarget) {
+            setIsModalOpen(false)
+        }
     }
 
     useEffect(() => {
@@ -103,10 +110,13 @@ const TeacherProfile = () => {
                     type="button"
                     color="orange"
                     content="Modifier Mot de Passe"
-                    onClick={handleButtonClick}
+                    onClick={openModal}
                 />
                 {isModalOpen && (
-                    <UpdatePasswordModal onClick={handleButtonClick} />
+                    <UpdatePasswordModal
+                        onClick={handleButtonClick}
+                        closeModal={closeModal}
+                    />
                 )}
             </MainLayout>
         )

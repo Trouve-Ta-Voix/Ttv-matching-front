@@ -20,6 +20,7 @@ const Profile = () => {
         if (!userData) {
             navigate("/")
         }
+        // eslint-disable-next-line
     }, [userData])
 
     const handleLogout = () => {
@@ -91,17 +92,20 @@ const Profile = () => {
                     </>
                 )}
                 {userData.role === "admin" && (
-                    <Button
-                        content="Evènements"
-                        color="blue"
-                        onClick={() => navigate(`/${userData.role}/events`)}
-                    />
+                    <>
+                        <Button
+                            content="Evènements"
+                            color="blue"
+                            onClick={() => navigate(`/${userData.role}/events`)}
+                        />
+                        <Button
+                            content="Lien d'inscription"
+                            color="blue"
+                            onClick={() => signUpLink()}
+                        />
+                    </>
                 )}
-                <Button
-                    content="Lien d'inscription"
-                    color="blue"
-                    onClick={() => signUpLink()}
-                />
+
                 <Button
                     content="Deconnexion"
                     color="orange"

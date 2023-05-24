@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { UserContext } from "../../../services/context/user"
 import { useFormik } from "formik"
 
-import { createAddress } from "../../../services/api/Profile"
+// import { createAddress } from "../../../services/api/Profile"
 
 import Subtitle from "../../atoms/Subtitle/Subtitle"
 import Form from "../Form/Form"
@@ -16,9 +16,10 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
     const { userToken } = useContext(UserContext)
     const formik = useFormik({
         initialValues: {
-            currentAddress: ""
+            currentAddress: "",
         },
         onSubmit: async (values) => {
+            console.log(userToken, values)
             // const response = await updateUserPassword(userToken, body)
         },
     })

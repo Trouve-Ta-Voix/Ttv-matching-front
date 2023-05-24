@@ -7,12 +7,11 @@ import { updateUserPassword } from "../../../services/api/User"
 import Subtitle from "../../atoms/Subtitle/Subtitle"
 import Form from "../Form/Form"
 import Logo from "../../atoms/Logo/Logo"
-// compo fleche retour
-import Button from "../../atoms/Button/Button"
+import Arrow from "../../atoms/Arrow/Arrow"
 
 import "./update-password-modal.css"
 
-const UpdatePasswordModal = ({ onClick }) => {
+const UpdatePasswordModal = ({ onClick, closeModal }) => {
     const { userToken } = useContext(UserContext)
     const formik = useFormik({
         initialValues: {
@@ -28,7 +27,10 @@ const UpdatePasswordModal = ({ onClick }) => {
                 }
                 const response = await updateUserPassword(userToken, body)
                 if (!response.message) {
-                    onClick()
+                    alert("Le mot de passe a été mis à jour")
+                    closeModal()
+                } else {
+                    alert("Votre mot de passe est incorrect")
                 }
             } else {
                 alert("Les Mots de passes ne correspondent pas")
@@ -40,14 +42,9 @@ const UpdatePasswordModal = ({ onClick }) => {
     return (
         <div className="update-password-modal" onClick={onClick}>
             <div className="box-content container">
-                <Button
-                    content="fleche"
-                    onClick={onClick}
-                    color="blue"
-                    type="button"
-                />
+                <Arrow onClick={onClick} orientation="left" />
                 <Logo position="inline" visible="hidden" />
-                <Subtitle subtitle="Modifier mon Mot de Passe" />
+                <Subtitle subtitle="Modifier mon Mot de Passe" color="blue" />
                 <Form
                     onSubmit={formik.handleSubmit}
                     button={{

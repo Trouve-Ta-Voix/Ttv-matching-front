@@ -28,7 +28,7 @@ const ClassAvailabilitiesWrapper = ({ classId }) => {
             {availabilities?.map((availability) => {
                 return (
                     <TeacherClassSubcard
-                        key={availability.createAt} // key trouble ?
+                        key={availability.createdAt}
                         availability={availability}
                     />
                 )

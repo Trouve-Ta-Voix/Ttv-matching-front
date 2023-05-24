@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom"
 import { useFormik } from "formik"
 
 import {
-    updateTrainerAdress,
-    getTrainerAddress
+    updateTrainerAddress,
+    getTrainerAddress,
 } from "../../services/api/Profile"
 import { UserContext } from "../../services/context/user"
 
@@ -25,11 +25,11 @@ const TrainerAdresses = () => {
             currentAddress: "",
         },
         onSubmit: async (values) => {
-            const response = await updateTrainerAdress(userToken, values, id)
-            window.location.reload();
+            const response = await updateTrainerAddress(userToken, values, id)
+            window.location.reload()
         },
     })
-    
+
     const fetchAddress = async () => {
         const data = await getTrainerAddress(userToken, id)
         if (data) {
@@ -51,7 +51,9 @@ const TrainerAdresses = () => {
     return (
         <MainLayout>
             <Title title="Modifier une disponibilité" />
-            <Paragraph content={`Adresse actuelle : ${currentAddress.currentAddress}`}/>
+            <Paragraph
+                content={`Adresse actuelle : ${currentAddress.currentAddress}`}
+            />
             <AvailibilityLayout>
                 <Form
                     onSubmit={formik.handleSubmit}

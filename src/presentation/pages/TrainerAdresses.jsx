@@ -24,7 +24,7 @@ const TrainerAdresses = () => {
     const navigate = useNavigate()
 
     const fetchAddress = async () => {
-        if(userToken) {
+        if (userToken) {
             const fetchedAddress = await getTrainerAdresses(userToken)
             setCurrentAdresses(fetchedAddress)
         }
@@ -56,18 +56,22 @@ const TrainerAdresses = () => {
             <SeparatorLine />
             <AvailibilityLayout>
                 {currentAddresses?.map((currentAddress, i) => {
-                        return (
-                            <TrainerActionAreaCard 
-                                address={currentAddress.currentAddress} 
-                                key={i}
-                                index={currentAddress.id}
-                                onTrashCanClick={handleDeleteClick}
-                                onPenClick={handlePenClick}    
-                            />
-                        )
+                    return (
+                        <TrainerActionAreaCard
+                            address={currentAddress.currentAddress}
+                            key={i}
+                            index={currentAddress.id}
+                            onTrashCanClick={handleDeleteClick}
+                            onPenClick={handlePenClick}
+                        />
+                    )
                 })}
             </AvailibilityLayout>
-            <Button color="blue" content="Créer une zone d'action" onClick={handleButtonClick}/> 
+            <Button
+                color="blue"
+                content="Créer une zone d'action"
+                onClick={handleButtonClick}
+            />
             {isModalOpen && (
                 <TrainerAddressCreateModal onClick={handleButtonClick} />
             )}

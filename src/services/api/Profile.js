@@ -116,6 +116,20 @@ const deleteTeacherClass = async (token, classId) => {
     return { response, status: request.status }
 }
 
+const getTrainerAvailabilities = async (token) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
 const getTeacherSchool = async (token) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/profile/schools/myschool`,
@@ -154,6 +168,7 @@ export {
     deleteTeacherClass,
     deleteTrainerAddress,
     getTrainerAddress,
+    getTrainerAvailabilities,
     createAddress,
     updateTrainerAdress,
     getTeacherSchool,

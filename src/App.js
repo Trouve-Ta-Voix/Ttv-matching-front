@@ -12,10 +12,10 @@ import SignUpTrainer from "./presentation/pages/SignUpTrainer"
 import Profile from "./presentation/pages/Profile"
 import NotFound from "./presentation/pages/NotFound"
 
-import AdminEvent from "./presentation/pages/AdminEvent"
+import AdminClasses from "./presentation/pages/AdminClasses"
 import AdminProfile from "./presentation/pages/AdminProfile"
 import AdminValidationAccounts from "./presentation/pages/AdminValidationAccounts"
-import AdminMatchTrainerPick from "./presentation/pages/AdminMatchTrainerPick"
+import AdminClass from "./presentation/pages/AdminClass"
 
 import TeacherClasses from "./presentation/pages/TeacherClasses"
 import TeacherProfile from "./presentation/pages/TeacherProfile"
@@ -39,15 +39,15 @@ const App = () => {
                     <Route path="/signup/teacher" element={<SignUpTeacher />} />
                     <Route path="/signup/trainer" element={<SignUpTrainer />} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/admin/events" element={<AdminEvent />} />
+                    <Route path="/admin/classes" element={<AdminClasses />} />
                     <Route path="/admin/profile" element={<AdminProfile />} />
                     <Route
                         path="/admin/validation/accounts"
                         element={<AdminValidationAccounts />}
                     />
                     <Route
-                        path="/admin/events/matching/:availabilityId"
-                        element={<AdminMatchTrainerPick />}
+                        path="/admin/classes/:classId"
+                        element={<AdminClass />}
                     />
                     <Route
                         path="/teacher/classes"

@@ -25,6 +25,7 @@ const TrainerAdresses = () => {
             currentAddress: "",
         },
         onSubmit: async (values) => {
+            // eslint-disable-next-line
             const response = await updateTrainerAddress(userToken, values, id)
             window.location.reload()
         },

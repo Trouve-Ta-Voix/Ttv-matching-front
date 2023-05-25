@@ -46,6 +46,7 @@ const UpdateAvailabilityModal = ({
             endAvailability: availabilityDay.endAvailability,
             dayValue: availabilityDay.dayData.startMinutes,
         })
+        // eslint-disable-next-line
     }, [])
 
     return (

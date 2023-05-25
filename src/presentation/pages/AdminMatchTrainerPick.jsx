@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react"
+import { useContext } from "react"
 import { UserContext } from "../../services/context/user"
 import { useNavigate } from "react-router-dom"
 
@@ -8,8 +8,6 @@ import Logo from "../atoms/Logo/Logo"
 import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
 import RoleLabel from "../atoms/RoleLabel/RoleLabel"
-import Subtitle from "../atoms/Subtitle/Subtitle"
-import SeparatorLine from "../atoms/Line/SeparatorLine"
 
 const AdminMatchTrainerPick = () => {
     const navigate = useNavigate()

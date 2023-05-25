@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { UserContext } from "../../../services/context/user"
 import { useFormik } from "formik"
 
@@ -19,8 +19,9 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
             currentAddress: "",
         },
         onSubmit: async (values) => {
+            //eslint-disable-next-line
             const response = await createAddress(userToken, values)
-            window.location.reload();
+            window.location.reload()
         },
     })
 
@@ -31,9 +32,7 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
     return (
         <div className="create-address-modal">
             <div className="box-content container">
-                <Arrow
-                    onClick={onClick}
-                />
+                <Arrow onClick={onClick} />
                 <Logo position="inline" visible="hidden" />
                 <Subtitle subtitle="Créer une zone d'action" />
                 <Form

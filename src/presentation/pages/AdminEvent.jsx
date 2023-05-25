@@ -48,8 +48,8 @@ const AdminEvent = () => {
 
     useEffect(() => {
         getAllEvents()
+        // eslint-disable-next-line
     }, [userToken])
-    console.log(inactives)
 
     if (!userData) {
         return (

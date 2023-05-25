@@ -7,8 +7,6 @@ import Form from "../organisms/Form/Form"
 import Title from "../atoms/Title/Title"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
 import Logo from "../atoms/Logo/Logo"
-import Paragraph from "../atoms/Paragraph/Paragraph"
-import TextInput from "../molecules/TextInput/TextInput"
 
 const SignUpTrainer = () => {
     const formik = useFormik({
@@ -97,7 +95,7 @@ const SignUpTrainer = () => {
                     //     onChange: formik.handleChange,
                     // },
                 ]}
-            >   
+            >
                 <p className="input-text-label">Adresse</p>
                 <AutocompleteInput
                     value={formik.values.currentAddress}

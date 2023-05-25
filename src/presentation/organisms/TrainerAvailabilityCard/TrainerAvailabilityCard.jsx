@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { findDay, translateTime } from "../../../services/timerange/timerange"
 import CircularProgress from "@mui/material/CircularProgress"
-import Pencil from "../../../medias/icons/pencil.png"
+// import Pencil from "../../../medias/icons/pencil.png"
 import Trash from "../../../medias/icons/trash.png"
 import UpdateAvailabilityModal from "../UpdateAvailabilityModal/UpdateAvailabilityModal"
 
@@ -29,9 +29,9 @@ const TrainerAvailabilityCard = ({ availability, onTrashClick }) => {
         })
         // eslint-disable-next-line
     }, [])
-    const openUpdateAvailabilityModal = () => {
-        setIsUpdateAvailabilityModalOpen(true)
-    }
+    // const openUpdateAvailabilityModal = () => {
+    //     setIsUpdateAvailabilityModalOpen(true)
+    // }
     const closeUpdateAvailabilityModal = () => {
         setIsUpdateAvailabilityModalOpen(false)
     }

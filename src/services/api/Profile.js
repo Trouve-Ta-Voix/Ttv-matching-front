@@ -14,7 +14,7 @@ const getTrainerAdresses = async (token) => {
     return response
 }
 
-// get one address 
+// get one address
 
 const getTrainerAddress = async (token, id) => {
     const request = await fetch(
@@ -30,9 +30,7 @@ const getTrainerAddress = async (token, id) => {
     return response
 }
 
-// put one address 
-
-const updateTrainerAdress = async (token, body, id) => {
+const updateTrainerAddress = async (token, id, body) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/profile/address/${id}`,
         {
@@ -44,21 +42,25 @@ const updateTrainerAdress = async (token, body, id) => {
             body: JSON.stringify(body),
         }
     )
+
     const response = await request.json()
     return response
 }
 
-// create one address
+// create one address for trainer
 
 const createAddress = async (token, body) => {
-    const request = await fetch(`${process.env.REACT_APP_BACKEND_URL}/profile/trainer/addresses`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(body),
-    })
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/trainer/addresses`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
 
     const response = await request.json()
     return response
@@ -113,6 +115,80 @@ const deleteTeacherClass = async (token, classId) => {
     return { response, status: request.status }
 }
 
+const getTrainerAvailabilities = async (token) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
+const createTrainerAvailability = async (token, body) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
+    const response = await request.json()
+    return { response, status: request.status }
+}
+
+const modifyTrainerAvailability = async (token, body, trainerId) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities/${trainerId}`,
+        {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
+    const response = await request.json()
+    return { response, status: request.status }
+}
+
+const deleteTrainerAvailability = async (token, id) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities/${id}`,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ id }),
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
 // export
 
-export { getTrainerAdresses, getTeacherClasses, deleteTeacherClass, deleteTrainerAddress, getTrainerAddress, createAddress, updateTrainerAdress }
+export {
+    getTrainerAdresses,
+    getTeacherClasses,
+    deleteTeacherClass,
+    deleteTrainerAddress,
+    updateTrainerAddress,
+    getTrainerAddress,
+    createAddress,
+    getTrainerAvailabilities,
+    createTrainerAvailability,
+    modifyTrainerAvailability,
+    deleteTrainerAvailability,
+}

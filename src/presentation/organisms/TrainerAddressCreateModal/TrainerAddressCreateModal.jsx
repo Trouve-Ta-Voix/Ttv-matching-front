@@ -19,7 +19,8 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
             currentAddress: "",
         },
         onSubmit: async (values) => {
-            await createAddress(userToken, values)
+            //eslint-disable-next-line
+            const response = await createAddress(userToken, values)
             window.location.reload()
         },
     })
@@ -33,7 +34,7 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
             <div className="box-content container">
                 <Arrow onClick={onClick} orientation="left" />
                 <Logo position="inline" visible="hidden" />
-                <Subtitle subtitle="Créer une zone d'action" color="blue"/>
+                <Subtitle subtitle="Créer une zone d'action" color="blue" />
                 <Form
                     onSubmit={formik.handleSubmit}
                     button={{

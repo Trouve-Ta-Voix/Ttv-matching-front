@@ -148,9 +148,9 @@ const AdminClasses = () => {
                                       <InactiveClassCard
                                           infos={event}
                                           key={event.id}
-                                        //   onClick={() => {
-                                        //       navigate(`./${event.id}`)
-                                        //   }}
+                                          //   onClick={() => {
+                                          //       navigate(`./${event.id}`)
+                                          //   }}
                                       />
                                   )
                               })

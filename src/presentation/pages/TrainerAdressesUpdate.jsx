@@ -2,10 +2,7 @@ import { useEffect, useContext, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useFormik } from "formik"
 
-import {
-    updateTrainerAdress,
-    getTrainerAddress,
-} from "../../services/api/Profile"
+import { getTrainerAddress } from "../../services/api/Profile"
 import { UserContext } from "../../services/context/user"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"
@@ -14,9 +11,7 @@ import Form from "../organisms/Form/Form"
 import Title from "../atoms/Title/Title"
 import Paragraph from "../atoms/Paragraph/Paragraph"
 import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
-import SeparatorLine from "../atoms/Line/SeparatorLine"
 import Logo from "../atoms/Logo/Logo"
-
 
 const TrainerAdresses = () => {
     const { userToken } = useContext(UserContext)
@@ -28,8 +23,9 @@ const TrainerAdresses = () => {
             currentAddress: "",
         },
         onSubmit: async (values) => {
-            await updateTrainerAdress(userToken, values, id)
-            fetchAddress()
+            // eslint-disable-next-line
+            const response = await updateTrainerAddress(userToken, values, id)
+            window.location.reload()
         },
     })
 
@@ -57,7 +53,6 @@ const TrainerAdresses = () => {
             <Paragraph
                 content={`Adresse actuelle : ${currentAddress.currentAddress}`}
             />
-            <SeparatorLine color="blue" />            
             <AvailibilityLayout>
                 <Form
                     onSubmit={formik.handleSubmit}

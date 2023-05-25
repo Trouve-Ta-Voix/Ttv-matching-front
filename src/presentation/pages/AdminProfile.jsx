@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../services/context/user"
-
 import { updateUserInfo } from "../../services/api/User"
 import { useFormik } from "formik"
 

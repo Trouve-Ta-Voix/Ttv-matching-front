@@ -130,6 +130,54 @@ const getTrainerAvailabilities = async (token) => {
     return response
 }
 
+const createTrainerAvailability = async (token, body) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
+    const response = await request.json()
+    return { response, status: request.status }
+}
+
+const modifyTrainerAvailability = async (token, body, trainerId) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities/${trainerId}`,
+        {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
+    const response = await request.json()
+    return { response, status: request.status }
+}
+
+const deleteTrainerAvailability = async (token, id) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/availabilities/${id}`,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ id }),
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
 const getTeacherSchool = async (token) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/profile/schools/myschool`,
@@ -169,8 +217,11 @@ export {
     deleteTrainerAddress,
     getTrainerAddress,
     getTrainerAvailabilities,
+    modifyTrainerAvailability,
+    deleteTrainerAvailability,
     createAddress,
     updateTrainerAdress,
     getTeacherSchool,
     createTeacherSchool,
+    createTrainerAvailability,
 }

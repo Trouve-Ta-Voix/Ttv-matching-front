@@ -28,7 +28,6 @@
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    cursor: pointer;
 }
 
 .trainer-availability-card-icon {
@@ -59,10 +58,12 @@
         position: absolute;
         right: 3%;
         top: 30%;
+        cursor: pointer;
     }
     .trainer-availability-card-icon-trash {
         position: absolute;
         left: 3%;
         top: 30%;
+        cursor: pointer;
     }
 }

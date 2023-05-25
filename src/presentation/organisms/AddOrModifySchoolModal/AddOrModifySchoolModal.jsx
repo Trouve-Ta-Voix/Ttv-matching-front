@@ -10,7 +10,7 @@ import { UserContext } from "../../../services/context/user"
 import { useFormik } from "formik"
 import Form from "../../organisms/Form/Form"
 
-const AddOrModifySchoolModal = ({ school, actionType, open, handleClose }) => {
+const AddOrModifySchoolModal = ({ school, actionType, open, closeModal }) => {
     const { userToken } = useContext(UserContext)
     const formik = useFormik({
         initialValues: {
@@ -22,7 +22,7 @@ const AddOrModifySchoolModal = ({ school, actionType, open, handleClose }) => {
                 currentAddress: values.address,
                 schoolName: values.name,
             })
-            window.location.reload()
+            closeModal()
         },
     })
     const handleChangeAddress = (data) => {
@@ -53,7 +53,7 @@ const AddOrModifySchoolModal = ({ school, actionType, open, handleClose }) => {
                     gap: "16px",
                 }}
             >
-                <Arrow orientation="left" color="blue" onClick={handleClose} />
+                <Arrow orientation="left" color="blue" onClick={closeModal} />
                 {actionType === "add" ? (
                     <>
                         <Subtitle subtitle="Ajouter mon école" color="blue" />

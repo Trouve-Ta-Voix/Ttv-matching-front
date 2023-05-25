@@ -19,21 +19,26 @@ const TeacherSchool = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     const handleClickAddOrModifySchool = () => {
-        setIsModalVisible(!isModalVisible)
+        setIsModalVisible(true)
+    }
+    const closeModal = () => {
+        setIsModalVisible(false)
+        fetchSchool()
     }
 
     const fetchSchool = async () => {
         setIsLoading(true)
         const fetchedSchool = await getTeacherSchool(userToken)
-        if (fetchedSchool) {
-            console.log(fetchedSchool)
-            setSchool(fetchedSchool)
+        if (fetchedSchool.status === 200) {
+            setSchool(fetchedSchool.response)
         }
         setIsLoading(false)
     }
 
     useEffect(() => {
-        fetchSchool()
+        if (userToken) {
+            fetchSchool()
+        }
         // eslint-disable-next-line
     }, [userToken])
 
@@ -85,7 +90,8 @@ const TeacherSchool = () => {
             {isModalVisible && (
                 <AddOrModifySchoolModal
                     open={isModalVisible}
-                    handleClose={handleClickAddOrModifySchool}
+                    openModal={handleClickAddOrModifySchool}
+                    closeModal={closeModal}
                     actionType={school ? "modify" : "add"}
                 />
             )}

@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom"
 import {
     getTeacherClasses,
     deleteTeacherClass,
+    getTeacherSchool,
 } from "../../services/api/Profile"
 import { UserContext } from "../../services/context/user"
 
-import { CircularProgress } from "@mui/material"
 import MainLayout from "../layouts/MainLayout/MainLayout"
 import Logo from "../atoms/Logo/Logo"
 import Title from "../atoms/Title/Title"
@@ -21,6 +21,7 @@ import AddClassModal from "../organisms/AddClassModal/AddClassModal"
 const TeacherClasses = () => {
     const { userToken } = useContext(UserContext)
     const [currentClasses, setCurrentClasses] = useState([])
+    const [currentSchool, setCurrentSchool] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const navigate = useNavigate()
 
@@ -35,10 +36,27 @@ const TeacherClasses = () => {
             }
         }
     }
+
+    const fetchSchool = async () => {
+        const fetchedSchool = await getTeacherSchool(userToken)
+
+        if (fetchedSchool) {
+            setCurrentSchool(fetchedSchool.response)
+        }
+    }
     useEffect(() => {
-        fetchClasses()
+        if (userToken) {
+            fetchSchool()
+        }
         // eslint-disable-next-line
     }, [userToken])
+    useEffect(() => {
+        if (currentSchool) {
+            console.log(currentSchool)
+            fetchClasses()
+        }
+        // eslint-disable-next-line
+    }, [currentSchool])
 
     const handleEyeClick = (index) => {
         const updateClasses = [...currentClasses]
@@ -70,50 +88,72 @@ const TeacherClasses = () => {
             setIsModalOpen(false)
         }
     }
-    if (currentClasses.length > 0) {
-        return (
-            <MainLayout>
-                <Logo />
-                <Title title="Mes classes" />
-                <Paragraph content="Renseignez ici vos classes" />
-                <SeparatorLine color="blue" />
-                <ClassesLayout>
-                    {currentClasses?.map((currentClass, i) => {
-                        return (
-                            <TeacherClassCard
-                                key={currentClass.createdAt}
-                                isSelected={currentClass.isSelected}
-                                classInfos={currentClass}
-                                onEyeClick={handleEyeClick}
-                                onTrashCanClick={handleDeleteClick}
-                                onPenClick={handlePenClick}
-                                index={i}
-                            >
-                                {currentClass.isSelected && (
-                                    <ClassAvailabilitiesWrapper
-                                        classId={currentClass.id}
-                                    />
-                                )}
-                            </TeacherClassCard>
-                        )
-                    })}
-                </ClassesLayout>
-                <Button
-                    color="blue"
-                    content="Ajouter une classe"
-                    onClick={openModal}
-                />
-                {isModalOpen && (
-                    <AddClassModal
-                        closeModal={closeModal}
-                        onClick={handleButtonClick}
-                        schoolName={currentClasses[0].school.name}
+    if (currentSchool) {
+        if (currentClasses.length > 0) {
+            return (
+                <MainLayout>
+                    <Logo />
+                    <Title title="Mes classes" />
+                    <Paragraph content="Renseignez ici vos classes" />
+                    <SeparatorLine color="blue" />
+                    <ClassesLayout>
+                        {currentClasses?.map((currentClass, i) => {
+                            return (
+                                <TeacherClassCard
+                                    key={currentClass.createdAt}
+                                    isSelected={currentClass.isSelected}
+                                    classInfos={currentClass}
+                                    onEyeClick={handleEyeClick}
+                                    onTrashCanClick={handleDeleteClick}
+                                    onPenClick={handlePenClick}
+                                    index={i}
+                                >
+                                    {currentClass.isSelected && (
+                                        <ClassAvailabilitiesWrapper
+                                            classId={currentClass.id}
+                                        />
+                                    )}
+                                </TeacherClassCard>
+                            )
+                        })}
+                    </ClassesLayout>
+                    <Button
+                        color="blue"
+                        content="Ajouter une classe"
+                        onClick={openModal}
                     />
-                )}
-            </MainLayout>
-        )
-    } else {
-        return <CircularProgress />
+                    {isModalOpen && (
+                        <AddClassModal
+                            closeModal={closeModal}
+                            onClick={handleButtonClick}
+                            schoolName={currentSchool.name}
+                        />
+                    )}
+                </MainLayout>
+            )
+        } else {
+            return (
+                <MainLayout>
+                    <Logo />
+                    <Title title="Mes classes" />
+                    <Paragraph content="Renseignez ici vos classes" />
+                    <SeparatorLine color="blue" />
+                    <Button
+                        color="blue"
+                        content="Ajouter une classe"
+                        onClick={openModal}
+                    />
+                    {isModalOpen && (
+                        <AddClassModal
+                            closeModal={closeModal}
+                            onClick={handleButtonClick}
+                            schoolName={currentSchool.name}
+                            schoolAddress={currentSchool.address.currentAddress}
+                        />
+                    )}
+                </MainLayout>
+            )
+        }
     }
 }
 

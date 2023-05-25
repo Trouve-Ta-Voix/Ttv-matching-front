@@ -32,7 +32,7 @@ const getTrainerAddress = async (token, id) => {
 
 // put one address
 
-const updateTrainerAdress = async (token, body, id) => {
+const updateTrainerAddress = async (token, body, id) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/profile/address/${id}`,
         {
@@ -189,7 +189,7 @@ const getTeacherSchool = async (token) => {
         }
     )
     const response = await request.json()
-    return response
+    return { response, status: request.status }
 }
 
 const createTeacherSchool = async (token, body) => {
@@ -220,7 +220,7 @@ export {
     modifyTrainerAvailability,
     deleteTrainerAvailability,
     createAddress,
-    updateTrainerAdress,
+    updateTrainerAddress,
     getTeacherSchool,
     createTeacherSchool,
     createTrainerAvailability,

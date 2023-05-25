@@ -10,7 +10,7 @@ import Logo from "../../atoms/Logo/Logo"
 
 import "./add-class-modal.css"
 
-const AddClassModal = ({ onClick, schoolName, closeModal }) => {
+const AddClassModal = ({ onClick, schoolName, schoolAddress, closeModal }) => {
     const { userToken } = useContext(UserContext)
 
     const formik = useFormik({
@@ -23,9 +23,10 @@ const AddClassModal = ({ onClick, schoolName, closeModal }) => {
             const body = {
                 ...values,
                 schoolName,
-                currentAddress: "1 Rue de la Réunion 75020 Paris",
+                currentAddress: schoolAddress,
             }
             const response = await createClass(userToken, body)
+            console.log(response.status)
             if (response.status === 200) {
                 alert("La Classe a été créée")
                 closeModal()
@@ -41,7 +42,7 @@ const AddClassModal = ({ onClick, schoolName, closeModal }) => {
     return (
         <div className="add-class-modal" onClick={onClick}>
             <div className="box-content container">
-                <Arrow orientation="left" onClick={onClick} color="blue" />
+                <Arrow orientation="left" onClick={closeModal} />
                 <Logo position="inline" visible="hidden" />
                 <Subtitle subtitle="Ajouter une classe" color="blue" />
                 <Form

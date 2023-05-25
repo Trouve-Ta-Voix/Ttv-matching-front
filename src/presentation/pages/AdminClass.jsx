@@ -23,8 +23,6 @@ const AdminClass = () => {
     const { userData, userToken } = useContext(UserContext)
     const [c, setC] = useState(null)
 
-    console.log(classId)
-
     const getClass = async () => {
         if (userToken) {
             const c = await getAdminClass(userToken, classId)

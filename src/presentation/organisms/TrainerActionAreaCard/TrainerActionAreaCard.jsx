@@ -4,12 +4,16 @@ import Trash from "../../../medias/icons/trash.png"
 
 import "./trainer-actionarea-card.css"
 
-const TrainerActionAreaCard = ({ hasCar, address, onPenClick, onTrashCanClick, index }) => {
+const TrainerActionAreaCard = ({
+    hasCar,
+    address,
+    onPenClick,
+    onTrashCanClick,
+    index,
+}) => {
     return (
         <div className="trainer-actionarea-card">
-            <div className="trainer-actionarea-card-text">
-                {address}
-            </div>
+            <div className="trainer-actionarea-card-text">{address}</div>
             <div className="trainer-actionarea-card-icons">
                 {hasCar && (
                     <img
@@ -34,7 +38,7 @@ const TrainerActionAreaCard = ({ hasCar, address, onPenClick, onTrashCanClick, i
                     }}
                     src={Trash}
                     alt="trash"
-                    className="trainer-actionarea-card-icon trainer-availability-card-icon-trash"
+                    className="trainer-actionarea-card-icon trainer-actionarea-card-icon-trash"
                 />
             </div>
         </div>

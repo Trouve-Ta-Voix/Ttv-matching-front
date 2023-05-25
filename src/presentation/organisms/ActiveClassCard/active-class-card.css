@@ -1,6 +1,7 @@
-
-.incoming-event-card {
+.active-class-card {
+    background-color: #0c15e4;
     width: calc(50% - 56px);
+    min-height: 132px;
     padding: 12px 20px;
     border-radius: 18px;
     display: flex;
@@ -11,15 +12,7 @@
     font-size: 23px;
 }
 
-.incoming-event-card-blue {
-    background-color: #0c15e4;
-}
-
-.incoming-event-card-orange {
-    background-color: #fd7826;
-}
-
-.incoming-event-card-top {
+.active-class-card-top {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,18 +20,18 @@
     border-bottom: 1px solid #f4efdc;
     padding-bottom: 18px;
 }
-.incoming-event-card-top-left {
+.active-class-card-top-left {
     display: flex;
     flex-direction: column;
     gap: 6px;
     align-items: flex-start;
 }
 
-.incoming-event-card-top-left-address {
+.active-class-card-top-left-address {
     font-size: 20px;
 }
 
-.incoming-event-card-top-right {
+.active-class-card-top-right {
     text-align: end;
     display: flex;
     flex-direction: column;
@@ -46,26 +39,24 @@
     font-size: 20px;
 }
 
-.incoming-event-card-bottom {
+.active-class-card-bottom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-top: 16px;
 }
 
-.incoming-event-card-bottom-teacher {
+.active-class-card-bottom-teacher {
     text-align: end;
 }
 
-.incoming-event-card-bottom-cta {
-    margin: 16px 0px;
+@media screen and (max-width: 900px) {
+    .active-class-card {
+        width: calc(100% - 48px);
+    }
 }
 
 @media screen and (max-width: 768px) {
-    .incoming-event-card {
-        width: 100%;
-    }
     p {
         font-size: 16px !important;
     }

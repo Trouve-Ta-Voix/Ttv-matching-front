@@ -32,7 +32,9 @@
     margin-right: 28px;
 }
 
-.trainer-actionarea-card-icon-trash,
+.trainer-actionarea-card-icon-trash {
+    cursor: pointer;
+}
 .trainer-actionarea-card-icon-pencil {
     cursor: pointer;
 }

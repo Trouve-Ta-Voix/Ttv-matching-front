@@ -7,7 +7,7 @@
     overflow: hidden;
     align-items: center;
     flex-wrap: wrap;
-    min-height: calc(100vh - 72px);
+    min-height: calc(100vh - 56px);
     justify-content: center;
 }
 
@@ -16,4 +16,8 @@
         max-width: 768px;
         margin: 18px auto;
     }
+}
+
+a {
+    text-decoration: none;
 }

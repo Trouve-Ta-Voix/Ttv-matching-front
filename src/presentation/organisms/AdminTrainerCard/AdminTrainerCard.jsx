@@ -6,7 +6,7 @@ const AdminTrainerCard = ({ trainer, onClick }) => {
             <p className="admin-trainer-card-trainer">{trainer.name}</p>
             <div className="admin-trainer-card-separator"></div>
             <p className="admin-trainer-card-availabilities">
-                Disponibilités = {trainer.availabilities}
+                Disponibilités = {trainer.availabilities.length}
             </p>
         </div>
     )

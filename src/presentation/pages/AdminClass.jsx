@@ -52,9 +52,8 @@ const AdminClass = () => {
         if (classId && userToken) {
             getClass()
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userToken, classId])
-
-    console.log(c)
 
     if (!c) {
         return (

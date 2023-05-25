@@ -2,10 +2,7 @@ import { useEffect, useContext, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useFormik } from "formik"
 
-import {
-    updateTrainerAdress,
-    getTrainerAddress,
-} from "../../services/api/Profile"
+import { getTrainerAddress } from "../../services/api/Profile"
 import { UserContext } from "../../services/context/user"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"
@@ -14,7 +11,6 @@ import Form from "../organisms/Form/Form"
 import Title from "../atoms/Title/Title"
 import Paragraph from "../atoms/Paragraph/Paragraph"
 import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
-import SeparatorLine from "../atoms/Line/SeparatorLine"
 import Logo from "../atoms/Logo/Logo"
 
 const TrainerAdresses = () => {

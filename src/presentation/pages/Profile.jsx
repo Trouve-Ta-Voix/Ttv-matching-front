@@ -67,11 +67,20 @@ const Profile = () => {
                     onClick={() => navigate(`/${userData.role}/profile`)}
                 />
                 {userData.role === "teacher" && (
-                    <Button
-                        content="Mes classes"
-                        color="blue"
-                        onClick={() => navigate(`/${userData.role}/classes`)}
-                    />
+                    <>
+                        <Button
+                            content="Mes classes"
+                            color="blue"
+                            onClick={() =>
+                                navigate(`/${userData.role}/classes`)
+                            }
+                        />
+                        <Button
+                            content="Mon école"
+                            color="blue"
+                            onClick={() => navigate(`/${userData.role}/school`)}
+                        />
+                    </>
                 )}
                 {userData.role === "trainer" && (
                     <>

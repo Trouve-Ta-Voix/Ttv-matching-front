@@ -14,7 +14,7 @@ const getTrainerAdresses = async (token) => {
     return response
 }
 
-// get one address 
+// get one address
 
 const getTrainerAddress = async (token, id) => {
     const request = await fetch(
@@ -30,7 +30,7 @@ const getTrainerAddress = async (token, id) => {
     return response
 }
 
-// put one address 
+// put one address
 
 const updateTrainerAdress = async (token, body, id) => {
     const request = await fetch(
@@ -51,14 +51,17 @@ const updateTrainerAdress = async (token, body, id) => {
 // create one address
 
 const createAddress = async (token, body) => {
-    const request = await fetch(`${process.env.REACT_APP_BACKEND_URL}/profile/trainer/addresses`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(body),
-    })
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/addresses`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
 
     const response = await request.json()
     return response
@@ -113,6 +116,46 @@ const deleteTeacherClass = async (token, classId) => {
     return { response, status: request.status }
 }
 
+const getTeacherSchool = async (token) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/schools/myschool`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
+const createTeacherSchool = async (token, body) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/schools`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
 // export
 
-export { getTrainerAdresses, getTeacherClasses, deleteTeacherClass, deleteTrainerAddress, getTrainerAddress, createAddress, updateTrainerAdress }
+export {
+    getTrainerAdresses,
+    getTeacherClasses,
+    deleteTeacherClass,
+    deleteTrainerAddress,
+    getTrainerAddress,
+    createAddress,
+    updateTrainerAdress,
+    getTeacherSchool,
+    createTeacherSchool,
+}

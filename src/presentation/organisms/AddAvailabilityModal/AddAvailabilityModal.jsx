@@ -6,8 +6,7 @@ import { translateInMinutes } from "../../../services/timerange/timerange"
 import Subtitle from "../../atoms/Subtitle/Subtitle"
 import Logo from "../../atoms/Logo/Logo"
 import Form from "../Form/Form"
-// compo fleche retour
-import Button from "../../atoms/Button/Button"
+import Arrow from "../../atoms/Arrow/Arrow"
 import TimePicker from "../../atoms/TimePicker/TimePicker"
 import "./add-availability-modal.css"
 import DaySelect from "../../atoms/Select/DaySelect"
@@ -45,14 +44,9 @@ const AddAvailabilityModal = ({ onClick, createAvailability }) => {
     return (
         <div className="add-availability-modal">
             <div className="box-content container">
-                <Button
-                    content="fleche"
-                    onClick={onClick}
-                    color="blue"
-                    type="button"
-                />
+                <Arrow onClick={onClick} orientation="left" />
                 <Logo position="inline" visible="hidden" />
-                <Subtitle subtitle="Créer une disponibilité" />
+                <Subtitle subtitle="Créer une disponibilité" color="blue"/>
                 <Form
                     onSubmit={formik.handleSubmit}
                     button={{ color: "blue", content: "Créer" }}

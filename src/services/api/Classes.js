@@ -80,6 +80,36 @@ const createClass = async (token, body) => {
     return { response, status: request.status }
 }
 
+// get admin classes
+const getAdminClasses = async (token) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/admin/classes`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
+// get admin class
+const getAdminClass = async (token, classId) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/admin/classes/${classId}`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
 // export
 
 export {
@@ -88,4 +118,6 @@ export {
     getClassInfo,
     createClassAvailability,
     createClass,
+    getAdminClasses,
+    getAdminClass,
 }

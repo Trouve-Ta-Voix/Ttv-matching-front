@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { useFormik } from "formik"
 
 import {
-    updateTrainerAddress,
+    updateTrainerAdress,
     getTrainerAddress,
 } from "../../services/api/Profile"
 import { UserContext } from "../../services/context/user"
@@ -14,6 +14,8 @@ import Form from "../organisms/Form/Form"
 import Title from "../atoms/Title/Title"
 import Paragraph from "../atoms/Paragraph/Paragraph"
 import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
+import SeparatorLine from "../atoms/Line/SeparatorLine"
+import Logo from "../atoms/Logo/Logo"
 
 const TrainerAdresses = () => {
     const { userToken } = useContext(UserContext)
@@ -36,7 +38,6 @@ const TrainerAdresses = () => {
         if (data) {
             getTrainerAddress(data)
             setCurrentAddress(data)
-            console.log(id)
         }
     }
 
@@ -45,12 +46,13 @@ const TrainerAdresses = () => {
         // eslint-disable-next-line
     }, [userToken])
 
-    const handleChangeAddress = (data) => {
+    const handleAddressChange = (data) => {
         formik.setFieldValue("currentAddress", data)
     }
 
     return (
         <MainLayout>
+            <Logo position="inline" size="big" />
             <Title title="Modifier une disponibilité" />
             <Paragraph
                 content={`Adresse actuelle : ${currentAddress.currentAddress}`}
@@ -67,7 +69,7 @@ const TrainerAdresses = () => {
                 >
                     <AutocompleteInput
                         value={formik.values.currentAddress}
-                        setValue={handleChangeAddress}
+                        setValue={handleAddressChange}
                     />
                 </Form>
             </AvailibilityLayout>

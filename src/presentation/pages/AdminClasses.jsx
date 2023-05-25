@@ -11,43 +11,36 @@ import RoleLabel from "../atoms/RoleLabel/RoleLabel"
 import Subtitle from "../atoms/Subtitle/Subtitle"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
 
-import IncomingEventCard from "../organisms/IncomingEventCard/IncomingEventCard"
-import WaitingForEventClassCard from "../organisms/WaitingForEventClassCard/WaitingForEventClassCard"
+import ActiveClassCard from "../organisms/ActiveClassCard/ActiveClassCard"
+import InactiveClassCard from "../organisms/InactiveClassCard/InactiveClassCard"
 
-import { getInactiveEvents, getSelectedEvents } from "../../services/api/Events"
+import { getAdminClasses } from "../../services/api/Classes"
 
-const AdminEvent = () => {
+const AdminClasses = () => {
     const navigate = useNavigate()
     const { userData, userToken } = useContext(UserContext)
     const [inactives, setInactives] = useState([])
     const [actives, setActives] = useState([])
 
-    const getAllEvents = async () => {
+    const getClasses = async () => {
         if (userToken) {
-            const fetchedInactives = await getInactiveEvents(userToken)
-            const fetchedSelecteds = await getSelectedEvents(userToken)
+            const classes = await getAdminClasses(userToken)
 
-            if (fetchedInactives) {
-                const updateInactiveEvents = fetchedInactives.map(
-                    (fetchedInactive) => {
-                        return { ...fetchedInactive, isSelected: false }
-                    }
-                )
-                setInactives(updateInactiveEvents)
-            }
-            if (fetchedSelecteds) {
-                const updateActiveEvents = fetchedSelecteds.map(
-                    (fetchedSelected) => {
-                        return { ...fetchedSelected, isSelected: false }
-                    }
-                )
-                setActives(updateActiveEvents)
-            }
+            const activeClasses = classes.filter((c) => {
+                return c.events.find((event) => event.selected)
+            })
+
+            const inactiveClasses = classes.filter((c) => {
+                return !c.events.find((event) => event.selected)
+            })
+
+            setActives(activeClasses)
+            setInactives(inactiveClasses)
         }
     }
 
     useEffect(() => {
-        getAllEvents()
+        getClasses()
         // eslint-disable-next-line
     }, [userToken])
 
@@ -96,7 +89,7 @@ const AdminEvent = () => {
                 />
                 <Container>
                     <Subtitle
-                        subtitle="Evénements à venir"
+                        subtitle="Classes avec évènements validés"
                         color="blue"
                         position="left"
                     />
@@ -104,22 +97,24 @@ const AdminEvent = () => {
                     <Container
                         sx={{
                             display: "flex",
-                            flexDirection: "column",
+                            flexDirection: {
+                                sm: "column",
+                                md: "row",
+                            },
+                            flexWrap: "wrap",
                             justifyContent: "flex-start",
                             alignItems: "flex-start",
-                            height: "30vh",
-                            overflowY: "scroll",
+                            paddingLeft: "0px !important",
+                            paddingRight: "0px !important",
+                            paddingTop: "24px !important",
+                            paddingBottom: "24px !important",
+                            gap: "24px",
                         }}
                     >
                         {actives
-                            ? actives.map((event) => {
-                                  return (
-                                      <IncomingEventCard
-                                          infos={event}
-                                          key={event.id}
-                                      />
-                                  )
-                              })
+                            ? actives.map((c) => (
+                                  <ActiveClassCard infos={c} key={c.id} />
+                              ))
                             : "Wololo"}
                     </Container>
                 </Container>
@@ -133,19 +128,29 @@ const AdminEvent = () => {
                     <Container
                         sx={{
                             display: "flex",
-                            flexDirection: "column",
+                            flexDirection: {
+                                sm: "column",
+                                md: "row",
+                            },
+                            flexWrap: "wrap",
                             justifyContent: "flex-start",
                             alignItems: "flex-start",
-                            height: "30vh",
-                            overflowY: "scroll",
+                            paddingLeft: "0px !important",
+                            paddingRight: "0px !important",
+                            paddingTop: "24px !important",
+                            paddingBottom: "24px !important",
+                            gap: "24px",
                         }}
                     >
                         {inactives
                             ? inactives.map((event) => {
                                   return (
-                                      <WaitingForEventClassCard
+                                      <InactiveClassCard
                                           infos={event}
                                           key={event.id}
+                                          //   onClick={() => {
+                                          //       navigate(`./${event.id}`)
+                                          //   }}
                                       />
                                   )
                               })
@@ -157,4 +162,4 @@ const AdminEvent = () => {
     }
 }
 
-export default AdminEvent
+export default AdminClasses

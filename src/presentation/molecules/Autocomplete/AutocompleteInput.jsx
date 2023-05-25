@@ -1,15 +1,16 @@
+import { useState, useEffect } from "react"
+
+import useDebounce from "../../../services/hooks/useDebounce"
+import getAddresses from "../../../services/api/addressAutocomplete"
+
 import {
     TextField,
     Autocomplete,
     CircularProgress,
     Container,
 } from "@mui/material"
-import { useState, useEffect } from "react"
-import useDebounce from "../../../services/hooks/useDebounce"
-import getAddresses from "../../../services/api/addressAutocomplete"
 
 const AutocompleteInput = ({ value, setValue }) => {
-    // const [value, setValue] = useState(null)
     const [inputValue, setInputValue] = useState("")
     const [addresses, setAddresses] = useState([])
     const [loading, setLoading] = useState(false)

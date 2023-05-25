@@ -32,9 +32,9 @@ const TrainerAddressUpdateModal = ({ onClick }) => {
     return (
         <div className="create-address-modal">
             <div className="box-content container">
-                <Arrow onClick={onClick} />
+                <Arrow onClick={onClick} orientation="left" />
                 <Logo position="inline" visible="hidden" />
-                <Subtitle subtitle="Créer une zone d'action" />
+                <Subtitle subtitle="Créer une zone d'action" color="blue" />
                 <Form
                     onSubmit={formik.handleSubmit}
                     button={{

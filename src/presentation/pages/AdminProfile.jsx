@@ -26,6 +26,7 @@ const AdminProfile = () => {
         onSubmit: async (values) => {
             const updateUser = await updateUserInfo(userToken, values)
             setUserData(updateUser)
+            alert("Vos informations ont été mises à jour")
         },
     })
 

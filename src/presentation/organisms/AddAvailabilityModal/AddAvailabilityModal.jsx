@@ -45,7 +45,7 @@ const AddAvailabilityModal = ({
     return (
         <div onClick={onClick} className="add-availability-modal">
             <div className="box-content container">
-                <Arrow onClick={onClick} color="blue" orientation="left" />
+                <Arrow onClick={onClick} orientation="left" />
                 <Logo position="inline" visible="hidden" />
                 <Subtitle subtitle="Créer une disponibilité" color="blue" />
                 <Form

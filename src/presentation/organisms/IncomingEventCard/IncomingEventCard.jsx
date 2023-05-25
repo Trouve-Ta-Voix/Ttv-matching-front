@@ -1,74 +1,95 @@
 import "./incoming-event-card.css"
 import { translateTime, findDay } from "../../../services/timerange/timerange"
 import { useEffect, useState } from "react"
+import Button from "../../atoms/Button/Button"
 
-const IncomingEventCard = ({ infos, hours, trainer }) => {
+const IncomingEventCard = ({ event, c, selectEvent, destroyEvent }) => {
     const [availabilityDay, setAvailabilityDay] = useState(null)
     useEffect(() => {
-        const day = findDay(infos)
+        const day = findDay(event)
         setAvailabilityDay(day)
         // eslint-disable-next-line
     }, [])
 
     return (
-        <div className="incoming-event-card">
+        <div
+            className={`incoming-event-card incoming-event-card-${
+                event.selected ? "blue" : "orange"
+            }`}
+        >
             <div className="incoming-event-card-top">
                 <div className="incoming-event-card-top-left">
                     <p className="incoming-event-card-top-left-name">
-                        {infos.class.school.name}
+                        {c.school.name}
                     </p>
                     <p className="incoming-event-card-top-left-address">
-                        {infos.class.school.address.currentAddress}
+                        {c.school.address.currentAddress}
                     </p>
                 </div>
                 <div className="incoming-event-card-top-right">
                     <p className="incoming-event-card-top-right-name">
-                        {infos.class.name} ({infos.class.size} élèves)
+                        {c.name} ({c.size} élèves)
                     </p>
                     <p className="incoming-event-card-top-right-hours">
                         {
                             translateTime(
                                 availabilityDay?.startMinute,
-                                infos.startMinute
+                                event.startMinute
                             ).hours
                         }
                         h
                         {translateTime(
                             availabilityDay?.startMinute,
-                            infos.startMinute
+                            event.startMinute
                         ).minutes > 0 &&
                             translateTime(
                                 availabilityDay?.startMinute,
-                                infos.startMinute
+                                event.startMinute
                             ).minutes}
                         -
                         {
                             translateTime(
                                 availabilityDay?.startMinute,
-                                infos.endMinute
+                                event.endMinute
                             ).hours
                         }
                         h
                         {translateTime(
                             availabilityDay?.startMinute,
-                            infos.endMinute
+                            event.endMinute
                         ).minutes > 0 &&
                             translateTime(
                                 availabilityDay?.startMinute,
-                                infos.endMinute
+                                event.endMinute
                             ).minutes}
                     </p>
                 </div>
             </div>
             <div className="incoming-event-card-bottom">
                 <p className="incoming-event-card-bottom-trainer">
-                    Formateur = {infos.trainer.firstName}{" "}
-                    {infos.trainer.lastName}
+                    Formateur = {event.trainer.firstName}{" "}
+                    {event.trainer.lastName}
                 </p>
                 <p className="incoming-event-card-bottom-teacher">
-                    Enseignant = {infos.class.teacher.firstName}{" "}
-                    {infos.class.teacher.lastName}
+                    Enseignant = {c.teacher.firstName} {c.teacher.lastName}
                 </p>
+            </div>
+            <div>
+                {!event.selected ? (
+                    <Button
+                        content="Activer l'évènement"
+                        color="white"
+                        className="incoming-event-card-bottom-cta"
+                        onClick={selectEvent}
+                    />
+                ) : (
+                    <Button
+                        content="Supprimer l'évènement"
+                        color="white"
+                        className="incoming-event-card-bottom-cta"
+                        onClick={destroyEvent}
+                    />
+                )}
             </div>
         </div>
     )

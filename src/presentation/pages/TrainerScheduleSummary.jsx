@@ -1,8 +1,6 @@
 import { useContext, useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
 
-import { Container } from "@mui/material"
 import MainLayout from "../layouts/MainLayout/MainLayout"
 import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
@@ -10,27 +8,17 @@ import Logo from "../atoms/Logo/Logo"
 import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
 import TrainerAvailabilityCard from "../organisms/TrainerAvailabilityCard/TrainerAvailabilityCard"
 import AddAvailabilityModal from "../organisms/AddAvailabilityModal/AddAvailabilityModal"
-import UpdateAvailabilityModal from "../organisms/UpdateAvailabilityModal/UpdateAvailabilityModal"
 
 import {
     getTrainerAvailabilities,
     createTrainerAvailability,
-    modifyTrainerAvailability,
     deleteTrainerAvailability,
 } from "../../services/api/Profile"
-import {
-    findDay,
-    translateInMinutes,
-    translateTime,
-} from "../../services/timerange/timerange"
 
 const TrainerScheduleSummary = () => {
-    const navigate = useNavigate()
-    const { trainerId } = useParams()
-    const { userToken, userData, setUserData } = useContext(UserContext)
+    const { userToken } = useContext(UserContext)
 
     const [availabilities, setAvailabilities] = useState([])
-    const [currentAvailability, setCurrentAvailability] = useState({})
     const [isCreateAvailabilityModalOpen, setIsCreateAvailabilityModalOpen] =
         useState(false)
 
@@ -42,6 +30,7 @@ const TrainerScheduleSummary = () => {
             fetchTrainerAvailabilities()
             setLoading(false)
         }
+        // eslint-disable-next-line
     }, [userToken])
 
     ////////////  API CALLS  ////////////
@@ -57,15 +46,15 @@ const TrainerScheduleSummary = () => {
         return response.status
     }
 
-    const modifyAvailability = async (values) => {
-        const response = await modifyTrainerAvailability(
-            userToken,
-            currentAvailability
-        )
-        if (response) {
-            fetchTrainerAvailabilities()
-        }
-    }
+    // const modifyAvailability = async (values) => {
+    //     const response = await modifyTrainerAvailability(
+    //         userToken,
+    //         currentAvailability
+    //     )
+    //     if (response) {
+    //         fetchTrainerAvailabilities()
+    //     }
+    // }
 
     const deleteAvailability = async (id) => {
         const response = await deleteTrainerAvailability(userToken, id)

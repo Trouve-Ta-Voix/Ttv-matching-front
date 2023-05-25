@@ -1,9 +1,10 @@
+import { useEffect } from "react"
+
 import Subtitle from "../../atoms/Subtitle/Subtitle"
 import Logo from "../../atoms/Logo/Logo"
 import Arrow from "../../atoms/Arrow/Arrow"
 import Form from "../Form/Form"
 import { useFormik } from "formik"
-
 import { translateInMinutes } from "../../../services/timerange/timerange"
 
 import DaySelect from "../../atoms/Select/DaySelect"
@@ -11,6 +12,7 @@ import TimePicker from "../../atoms/TimePicker/TimePicker"
 
 import "./update-availability-modal.css"
 const UpdateAvailabilityModal = ({
+    availabilityDay,
     onClick,
     closeModal,
     updateAvailability,
@@ -29,7 +31,7 @@ const UpdateAvailabilityModal = ({
             )
             const status = await updateAvailability(availabilityInMinutes)
             if (status === 200) {
-                alert("La disponibilité a été créée")
+                alert("La disponibilité a été mise à jour")
                 closeModal()
             } else if (status === 412) {
                 alert(
@@ -38,6 +40,14 @@ const UpdateAvailabilityModal = ({
             }
         },
     })
+    useEffect(() => {
+        formik.setValues({
+            startAvailability: availabilityDay.startAvailability,
+            endAvailability: availabilityDay.endAvailability,
+            dayValue: availabilityDay.dayData.startMinutes,
+        })
+    }, [])
+
     return (
         <div className="update-availability-modal" onClick={onClick}>
             <div className="box-content container">

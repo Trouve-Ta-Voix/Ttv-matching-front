@@ -1,10 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { UserContextProvider } from "./services/context/user"
 
-// import { LocalizationProvider } from "@mui/x-date-pickers"
-// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
-// import "dayjs/locale/fr"
-
 import Login from "./presentation/pages/Login"
 import SignUp from "./presentation/pages/SignUp"
 import SignUpTeacher from "./presentation/pages/SignUpTeacher"
@@ -32,7 +28,6 @@ import "./shared/reset.css"
 const App = () => {
     return (
         <UserContextProvider>
-            {/* <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr"> */}
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Login />} />
@@ -82,7 +77,6 @@ const App = () => {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
-            {/* </LocalizationProvider> */}
         </UserContextProvider>
     )
 }

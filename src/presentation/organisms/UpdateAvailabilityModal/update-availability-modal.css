@@ -7,7 +7,7 @@
     gap: 32px;
 }
 
-.add-availability-modal {
+.update-availability-modal {
     position: absolute;
     top: 0;
     left: 0;
@@ -15,6 +15,9 @@
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
+}
+.update-availability-modal:hover {
+    cursor: pointer;
 }
 
 .box-content {
@@ -28,7 +31,4 @@
 }
 .box-content:hover {
     cursor: initial;
-}
-.add-availability-modal:hover {
-    cursor: pointer;
 }

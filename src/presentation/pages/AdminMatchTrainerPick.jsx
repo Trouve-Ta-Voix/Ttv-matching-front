@@ -1,6 +1,6 @@
-import { useEffect, useContext, useState } from "react"
+import { useContext } from "react"
 import { UserContext } from "../../services/context/user"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import { CircularProgress, Container } from "@mui/material"
 import MainLayout from "../layouts/MainLayout/MainLayout"

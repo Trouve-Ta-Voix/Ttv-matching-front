@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom"
 import "./waiting-for-event-class-card.css"
 
 const WaitingForEventClassCard = ({ infos, onClick }) => {

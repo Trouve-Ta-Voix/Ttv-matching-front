@@ -33,6 +33,7 @@ const AdminMatchTrainerPick = () => {
 
     useEffect(() => {
         getAvailabilityData()
+        // eslint-disable-next-line
     }, [userToken])
 
     if (!availability) {

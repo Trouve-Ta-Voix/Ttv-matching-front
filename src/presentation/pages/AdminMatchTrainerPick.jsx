@@ -33,7 +33,6 @@ const AdminMatchTrainerPick = () => {
 
     useEffect(() => {
         getAvailabilityData()
-        console.log(availability)
     }, [userToken])
 
     if (!availability) {

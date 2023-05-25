@@ -1,6 +1,5 @@
 import { useEffect, useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useParams } from "react-router-dom"
 import {
     getTrainerAdresses,
     deleteTrainerAddress,
@@ -25,7 +24,7 @@ const TrainerAdresses = () => {
     const navigate = useNavigate()
 
     const fetchAddress = async () => {
-        if(userToken) {
+        if (userToken) {
             const fetchedAddress = await getTrainerAdresses(userToken)
             setCurrentAdresses(fetchedAddress)
         }
@@ -55,21 +54,25 @@ const TrainerAdresses = () => {
             <Logo position="inline" size="big" />
             <Title title="Zones d'actions" />
             <Paragraph content="Renseignez ici vos adresses, correspondant à votre périmètre d'activité" />
-            <SeparatorLine color="blue" />            
+            <SeparatorLine color="blue" />
             <AvailibilityLayout>
                 {currentAddresses?.map((currentAddress, i) => {
-                        return (
-                            <TrainerActionAreaCard 
-                                address={currentAddress.currentAddress} 
-                                key={i}
-                                index={currentAddress.id}
-                                onTrashCanClick={handleDeleteClick}
-                                onPenClick={handlePenClick}    
-                            />
-                        )
+                    return (
+                        <TrainerActionAreaCard
+                            address={currentAddress.currentAddress}
+                            key={i}
+                            index={currentAddress.id}
+                            onTrashCanClick={handleDeleteClick}
+                            onPenClick={handlePenClick}
+                        />
+                    )
                 })}
             </AvailibilityLayout>
-            <Button color="blue" content="Créer une zone d'action" onClick={handleButtonClick}/> 
+            <Button
+                color="blue"
+                content="Créer une zone d'action"
+                onClick={handleButtonClick}
+            />
             {isModalOpen && (
                 <TrainerAddressCreateModal onClick={handleButtonClick} />
             )}

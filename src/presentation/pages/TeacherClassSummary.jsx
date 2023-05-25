@@ -30,6 +30,7 @@ const TeacherClassSummary = () => {
         },
         onSubmit: (values) => {
             updateClassInfo(userToken, classId, values)
+            alert("Vos informations ont été mises à jour")
         },
     })
     useEffect(() => {

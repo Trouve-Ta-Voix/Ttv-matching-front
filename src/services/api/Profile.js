@@ -30,7 +30,9 @@ const getTrainerAddress = async (token, id) => {
     return response
 }
 
-const updateTrainerAddress = async (token, id, body) => {
+// put one address
+
+const updateTrainerAdress = async (token, body, id) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/profile/address/${id}`,
         {
@@ -42,16 +44,15 @@ const updateTrainerAddress = async (token, id, body) => {
             body: JSON.stringify(body),
         }
     )
-
     const response = await request.json()
     return response
 }
 
-// create one address for trainer
+// create one address
 
 const createAddress = async (token, body) => {
     const request = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/trainer/addresses`,
+        `${process.env.REACT_APP_BACKEND_URL}/profile/trainer/addresses`,
         {
             method: "POST",
             headers: {
@@ -177,6 +178,36 @@ const deleteTrainerAvailability = async (token, id) => {
     return response
 }
 
+const getTeacherSchool = async (token) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/schools/myschool`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
+const createTeacherSchool = async (token, body) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/schools`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        }
+    )
+    const response = await request.json()
+    return response
+}
+
 // export
 
 export {
@@ -184,11 +215,13 @@ export {
     getTeacherClasses,
     deleteTeacherClass,
     deleteTrainerAddress,
-    updateTrainerAddress,
     getTrainerAddress,
-    createAddress,
     getTrainerAvailabilities,
-    createTrainerAvailability,
     modifyTrainerAvailability,
     deleteTrainerAvailability,
+    createAddress,
+    updateTrainerAdress,
+    getTeacherSchool,
+    createTeacherSchool,
+    createTrainerAvailability,
 }

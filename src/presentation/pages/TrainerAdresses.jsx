@@ -54,7 +54,7 @@ const TrainerAdresses = () => {
             <Logo position="inline" size="big" />
             <Title title="Zones d'actions" />
             <Paragraph content="Renseignez ici vos adresses, correspondant à votre périmètre d'activité" />
-            <SeparatorLine color="blue" />            
+            <SeparatorLine color="blue" />
             <AvailibilityLayout>
                 {currentAddresses?.map((currentAddress, i) => {
                     return (

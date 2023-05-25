@@ -96,7 +96,9 @@ const Profile = () => {
                         <Button
                             content="Evènements"
                             color="blue"
-                            onClick={() => navigate(`/${userData.role}/events`)}
+                            onClick={() =>
+                                navigate(`/${userData.role}/classes`)
+                            }
                         />
                         <Button
                             content="Lien d'inscription"

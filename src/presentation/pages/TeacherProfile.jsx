@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
 
 import { updateUserInfo } from "../../services/api/User"
@@ -11,11 +11,13 @@ import Form from "../organisms/Form/Form"
 import Logo from "../atoms/Logo/Logo"
 import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
+import Arrow from "../atoms/Arrow/Arrow"
 import UpdatePasswordModal from "../organisms/UpdatePasswordModal/UpdatePasswordModal"
 
 const TeacherProfile = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { userToken, userData, setUserData } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -68,6 +70,10 @@ const TeacherProfile = () => {
         return (
             <MainLayout>
                 <Logo />
+                <Arrow
+                    onClick={() => navigate("/profile")}
+                    orientation="left"
+                />
                 <Title title="Profil" />
                 <Form
                     onSubmit={formik.handleSubmit}

@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
 import { Container, CircularProgress } from "@mui/material"
 
@@ -8,11 +9,13 @@ import Logo from "../atoms/Logo/Logo"
 import Title from "../atoms/Title/Title"
 import Subtitle from "../atoms/Subtitle/Subtitle"
 import Button from "../atoms/Button/Button"
+import Arrow from "../atoms/Arrow/Arrow"
 
 import { getTeacherSchool } from "../../services/api/Profile"
 
 const TeacherSchool = () => {
     const { userToken } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const [school, setSchool] = useState(null)
     const [isModalVisible, setIsModalVisible] = useState(false)
@@ -45,6 +48,12 @@ const TeacherSchool = () => {
     return (
         <MainLayout>
             <Logo size="big" position="inline" />
+            <Arrow
+                onClick={() => {
+                    navigate("/profile")
+                }}
+                orientation="left"
+            />
             {isLoading ? (
                 <CircularProgress />
             ) : school ? (

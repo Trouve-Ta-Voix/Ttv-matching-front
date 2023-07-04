@@ -10,6 +10,7 @@ import Button from "../atoms/Button/Button"
 import RoleLabel from "../atoms/RoleLabel/RoleLabel"
 import Subtitle from "../atoms/Subtitle/Subtitle"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
+import Arrow from "../atoms/Arrow/Arrow"
 import { activateEvent, deleteEvent } from "../../services/api/Events"
 import { getAdminClass } from "../../services/api/Classes"
 import IncomingEventCard from "../organisms/IncomingEventCard/IncomingEventCard"
@@ -63,6 +64,12 @@ const AdminClass = () => {
         return (
             <MainLayout>
                 <Logo position="inline" size="big" />
+                <Arrow
+                    onClick={() => {
+                        navigate("/admin/classes")
+                    }}
+                    orientation="left"
+                />
                 <Container
                     sx={{
                         display: "flex",

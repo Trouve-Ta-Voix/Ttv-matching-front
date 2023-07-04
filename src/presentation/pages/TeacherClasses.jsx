@@ -13,6 +13,7 @@ import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
 import Paragraph from "../atoms/Paragraph/Paragraph"
+import Arrow from "../atoms/Arrow/Arrow"
 import TeacherClassCard from "../molecules/TeacherClassCard/TeacherClassCard"
 import ClassAvailabilitiesWrapper from "../organisms/ClassAvailabilitiesWrapper/ClassAvailabilitiesWrapper"
 import ClassesLayout from "../layouts/ClassesLayout/ClassesLayout"
@@ -93,6 +94,10 @@ const TeacherClasses = () => {
             return (
                 <MainLayout>
                     <Logo />
+                    <Arrow
+                        onClick={() => navigate("/profile")}
+                        orientation="left"
+                    />
                     <Title title="Mes classes" />
                     <Paragraph content="Renseignez ici vos classes" />
                     <SeparatorLine color="blue" />

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
 import { updateUserInfo } from "../../services/api/User"
 import { useFormik } from "formik"
@@ -14,6 +15,7 @@ import UpdatePasswordModal from "../organisms/UpdatePasswordModal/UpdatePassword
 const AdminProfile = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { userToken, userData, setUserData } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -27,6 +29,7 @@ const AdminProfile = () => {
             const updateUser = await updateUserInfo(userToken, values)
             setUserData(updateUser)
             alert("Vos informations ont été mises à jour")
+            navigate("/profile")
         },
     })
 

@@ -11,6 +11,8 @@ const IncomingEventCard = ({ event, c, selectEvent, destroyEvent }) => {
         // eslint-disable-next-line
     }, [])
 
+    const travelDuration = Math.floor(event.travelDuration / 60)
+
     return (
         <div
             className={`incoming-event-card incoming-event-card-${
@@ -31,7 +33,7 @@ const IncomingEventCard = ({ event, c, selectEvent, destroyEvent }) => {
                         {c.name} ({c.size} élèves)
                     </p>
                     <p className="incoming-event-card-top-right-hours">
-                        {
+                        {availabilityDay?.day} {
                             translateTime(
                                 availabilityDay?.startMinute,
                                 event.startMinute
@@ -74,7 +76,7 @@ const IncomingEventCard = ({ event, c, selectEvent, destroyEvent }) => {
                     Enseignant = {c.teacher.firstName} {c.teacher.lastName}
                 </p>
             </div>
-            <div>
+            <div className="incoming-event-card-bottom">
                 {!event.selected ? (
                     <Button
                         content="Activer l'évènement"
@@ -90,6 +92,9 @@ const IncomingEventCard = ({ event, c, selectEvent, destroyEvent }) => {
                         onClick={destroyEvent}
                     />
                 )}
+                <p>
+                    Temps de trajet = {travelDuration} min
+                </p>
             </div>
         </div>
     )

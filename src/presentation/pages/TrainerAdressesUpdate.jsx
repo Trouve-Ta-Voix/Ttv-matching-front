@@ -2,7 +2,10 @@ import { useEffect, useContext, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 
-import { getTrainerAddress } from "../../services/api/Profile"
+import {
+    getTrainerAddress,
+    updateTrainerAddress,
+} from "../../services/api/Profile"
 import { UserContext } from "../../services/context/user"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"

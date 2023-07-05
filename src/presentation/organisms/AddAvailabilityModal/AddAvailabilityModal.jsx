@@ -43,7 +43,7 @@ const AddAvailabilityModal = ({
 
     // render
     return (
-        <div onClick={onClick} className="add-availability-modal">
+        <div className="add-availability-modal">
             <div className="box-content container">
                 <Arrow onClick={onClick} orientation="left" />
                 <Logo position="inline" visible="hidden" />

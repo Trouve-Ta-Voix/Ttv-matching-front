@@ -34,10 +34,12 @@ const SignUpTrainer = () => {
                     alert("Votre compte a été créé")
                     navigate("/")
                 } else {
+                    // Error handling
                     if (response?.response[0]?.msg) {
                         switch (response.response[0].msg) {
                             case "Pseudo length isn't right":
                                 alert("Vérifiez le nom et le prénom")
+                                break
                             case "Invalid value":
                                 alert("Vérifiez le numéro de téléphone")
                                 break
@@ -47,6 +49,8 @@ const SignUpTrainer = () => {
                             case "Email isn't right":
                                 alert("L'email n'est pas correct")
                                 break
+                            default:
+                                alert("Erreur interne du serveur")
                         }
                     } else if (response.status === 500) {
                         alert("Erreur interne du serveur")

@@ -37,15 +37,7 @@ const AdminMatchTrainerPick = () => {
         // eslint-disable-next-line
     }, [userToken])
 
-    if (!availability) {
-    useEffect(() => {
-        if (!userData) {
-            navigate("/")
-        }
-        // eslint-disable-next-line
-    }, [userData])
     if (!userData) {
-
         return (
             <MainLayout>
                 <CircularProgress />

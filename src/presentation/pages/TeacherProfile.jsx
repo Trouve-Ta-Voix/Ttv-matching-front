@@ -18,7 +18,6 @@ const TeacherProfile = () => {
     const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { userToken, userData, setUserData } = useContext(UserContext)
-    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -57,8 +56,6 @@ const TeacherProfile = () => {
                 phone: userData.phone,
                 role: userData.role,
             })
-        } else {
-            navigate("/")
         }
         // eslint-disable-next-line
     }, [userData])

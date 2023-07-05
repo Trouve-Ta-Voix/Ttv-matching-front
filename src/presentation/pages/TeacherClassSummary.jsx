@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useFormik } from "formik"
 import { UserContext } from "../../services/context/user"
 import {
@@ -17,8 +17,7 @@ import Button from "../atoms/Button/Button"
 import Form from "../organisms/Form/Form"
 
 const TeacherClassSummary = () => {
-    const navigate = useNavigate()
-    const { userToken, userData } = useContext(UserContext)
+    const { userToken } = useContext(UserContext)
     const [isModalVisible, setIsModalVisible] = useState(false)
     const [classData, setClassData] = useState(null)
     const { classId } = useParams()
@@ -34,12 +33,6 @@ const TeacherClassSummary = () => {
             alert("Vos informations ont été mises à jour")
         },
     })
-    useEffect(() => {
-        if (!userData) {
-            navigate("/")
-        }
-        // eslint-disable-next-line
-    }, [userData])
 
     useEffect(() => {
         fetchClassInfo()

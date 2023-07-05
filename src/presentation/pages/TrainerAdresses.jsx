@@ -15,6 +15,7 @@ import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout
 import TrainerActionAreaCard from "../organisms/TrainerActionAreaCard/TrainerActionAreaCard"
 import TrainerAddressCreateModal from "../organisms/TrainerAddressCreateModal/TrainerAddressCreateModal"
 import Logo from "../atoms/Logo/Logo"
+import Arrow from "../atoms/Arrow/Arrow"
 
 const TrainerAdresses = () => {
     const { userToken, userData } = useContext(UserContext)
@@ -58,6 +59,7 @@ const TrainerAdresses = () => {
     return (
         <MainLayout>
             <Logo position="inline" size="big" />
+            <Arrow onClick={() => navigate("/profile")} orientation="left" />
             <Title title="Zones d'actions" />
             <Paragraph content="Renseignez ici vos adresses, correspondant à votre périmètre d'activité" />
             <SeparatorLine color="blue" />

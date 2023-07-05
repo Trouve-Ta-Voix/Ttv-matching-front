@@ -1,11 +1,12 @@
 import { useContext, useState, useEffect } from "react"
-import { UserContext } from "../../services/context/user"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../../services/context/user"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"
 import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
 import Logo from "../atoms/Logo/Logo"
+import Arrow from "../atoms/Arrow/Arrow"
 import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
 import TrainerAvailabilityCard from "../organisms/TrainerAvailabilityCard/TrainerAvailabilityCard"
 import AddAvailabilityModal from "../organisms/AddAvailabilityModal/AddAvailabilityModal"
@@ -91,6 +92,7 @@ const TrainerScheduleSummary = () => {
     return (
         <MainLayout>
             <Logo position="inline" size="big" />
+            <Arrow onClick={() => navigate("/profile")} orientation="left" />
             <Title title="Mes disponibilités" />
             <AvailibilityLayout>
                 {loading ? (

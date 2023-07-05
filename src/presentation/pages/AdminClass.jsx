@@ -10,6 +10,7 @@ import Button from "../atoms/Button/Button"
 import RoleLabel from "../atoms/RoleLabel/RoleLabel"
 import Subtitle from "../atoms/Subtitle/Subtitle"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
+import RangeDistance from "../atoms/RangeDistance/RangeDistance"
 import { activateEvent, deleteEvent } from "../../services/api/Events"
 import { getAdminClass } from "../../services/api/Classes"
 import IncomingEventCard from "../organisms/IncomingEventCard/IncomingEventCard"
@@ -23,6 +24,8 @@ const AdminClass = () => {
     const { userData, userToken } = useContext(UserContext)
     const [c, setC] = useState(null)
 
+    const [rangeValue, setRangeValue] = useState(45)
+
     const getClass = async () => {
         if (userToken) {
             const c = await getAdminClass(userToken, classId)
@@ -31,7 +34,7 @@ const AdminClass = () => {
     }
 
     const launchMatching = async () => {
-        await doMatch(userToken, classId)
+        await doMatch(userToken, classId, rangeValue)
         getClass()
     }
 
@@ -169,6 +172,10 @@ const AdminClass = () => {
                             paddingBottom: "24px !important",
                         }}
                     >
+                        <RangeDistance
+                            value={rangeValue}
+                            setValue={setRangeValue}
+                        />
                         <Button
                             content="Lancer le matching"
                             color="blue"

@@ -70,6 +70,10 @@ const TeacherClassSummary = () => {
 
     const createAvailability = async (body) => {
         const response = await createClassAvailability(userToken, classId, body)
+        if (response.status === 200) {
+            alert("La disponibilité a bien été ajoutée")
+            setIsModalVisible(false)
+        }
         return response.status
     }
 

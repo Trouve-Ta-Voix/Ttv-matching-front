@@ -36,6 +36,8 @@ const Login = () => {
                     case "Empty or wrong password":
                         setError("Mot de passe vide ou incorrect")
                         break
+                    default:
+                        setError("Erreur interne du serveur")
                 }
             }
             setUserToken(response.token)

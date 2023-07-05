@@ -18,7 +18,7 @@ import Logo from "../atoms/Logo/Logo"
 import Arrow from "../atoms/Arrow/Arrow"
 
 const TrainerAdresses = () => {
-    const { userToken } = useContext(UserContext)
+    const { userToken, userData } = useContext(UserContext)
     const [currentAddresses, setCurrentAdresses] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -35,6 +35,12 @@ const TrainerAdresses = () => {
         fetchAddress()
         // eslint-disable-next-line
     }, [userToken])
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
 
     const handleDeleteClick = async (id) => {
         const request = await deleteTrainerAddress(userToken, id)

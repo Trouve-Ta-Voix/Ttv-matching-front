@@ -1,4 +1,4 @@
-export const doMatch = async (userToken, classId) => {
+export const doMatch = async (userToken, classId, rangeValue) => {
     const request = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/events/classes/${classId}`,
         {
@@ -7,6 +7,7 @@ export const doMatch = async (userToken, classId) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${userToken}`,
             },
+            body: JSON.stringify({ rangeValue }),
         }
     )
 

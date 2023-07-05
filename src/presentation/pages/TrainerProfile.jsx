@@ -18,6 +18,7 @@ const TrainerProfile = () => {
     const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { userToken, userData, setUserData } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -32,6 +33,7 @@ const TrainerProfile = () => {
             const updateUser = await updateUserInfo(userToken, values)
             setUserData(updateUser)
             alert("Vos informations ont été mises à jour")
+            navigate("/profile")
         },
     })
 

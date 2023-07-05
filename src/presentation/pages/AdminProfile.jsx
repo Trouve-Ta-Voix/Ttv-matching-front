@@ -42,6 +42,7 @@ const AdminProfile = () => {
                 role: userData.role,
             })
         }
+        // eslint-disable-next-line
     }, [userData])
     const openModal = () => {
         setIsModalOpen(true)

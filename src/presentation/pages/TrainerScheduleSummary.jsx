@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
-import { useNavigate } from "react-router-dom"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"
 import Title from "../atoms/Title/Title"
@@ -19,7 +18,6 @@ import {
 } from "../../services/api/Profile"
 
 const TrainerScheduleSummary = () => {
-    const { userToken } = useContext(UserContext)
     const navigate = useNavigate()
     const { userToken, userData } = useContext(UserContext)
 

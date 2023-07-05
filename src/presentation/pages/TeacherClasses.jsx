@@ -20,7 +20,8 @@ import ClassesLayout from "../layouts/ClassesLayout/ClassesLayout"
 import AddClassModal from "../organisms/AddClassModal/AddClassModal"
 
 const TeacherClasses = () => {
-    const { userToken } = useContext(UserContext)
+    const { userToken, userData } = useContext(UserContext)
+
     const [currentClasses, setCurrentClasses] = useState([])
     const [currentSchool, setCurrentSchool] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -52,12 +53,13 @@ const TeacherClasses = () => {
         // eslint-disable-next-line
     }, [userToken])
     useEffect(() => {
-        if (currentSchool) {
-            console.log(currentSchool)
-            fetchClasses()
+        if (!userData) {
+            navigate("/")
         }
         // eslint-disable-next-line
-    }, [currentSchool])
+    }, [userData])
+
+
 
     const handleEyeClick = (index) => {
         const updateClasses = [...currentClasses]

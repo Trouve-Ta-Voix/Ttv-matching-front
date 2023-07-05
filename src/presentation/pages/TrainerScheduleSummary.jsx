@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
+import { useNavigate } from "react-router-dom"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"
 import Title from "../atoms/Title/Title"
@@ -20,6 +21,7 @@ import {
 const TrainerScheduleSummary = () => {
     const { userToken } = useContext(UserContext)
     const navigate = useNavigate()
+    const { userToken, userData } = useContext(UserContext)
 
     const [availabilities, setAvailabilities] = useState([])
     const [isCreateAvailabilityModalOpen, setIsCreateAvailabilityModalOpen] =
@@ -35,6 +37,12 @@ const TrainerScheduleSummary = () => {
         }
         // eslint-disable-next-line
     }, [userToken])
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
 
     ////////////  API CALLS  ////////////
 
@@ -65,8 +73,6 @@ const TrainerScheduleSummary = () => {
             fetchTrainerAvailabilities()
         }
     }
-
-    ////////////  ACTIONS ////////////
 
     const openCreateAvailabilityModal = () => {
         setIsCreateAvailabilityModalOpen(true)

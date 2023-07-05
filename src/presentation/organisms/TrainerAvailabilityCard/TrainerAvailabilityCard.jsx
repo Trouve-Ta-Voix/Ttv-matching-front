@@ -40,9 +40,7 @@ const TrainerAvailabilityCard = ({ availability, onTrashClick }) => {
             setIsUpdateAvailabilityModalOpen(!isUpdateAvailabilityModalOpen)
         }
     }
-    const handleModifyAvailability = (data) => {
-        console.log(data)
-    }
+    const handleModifyAvailability = (data) => {}
     if (!availabilityDay) {
         return <CircularProgress />
     } else {

@@ -23,7 +23,6 @@ const SignUpTrainer = () => {
             currentAddress: "",
         },
         onSubmit: async (values) => {
-            console.log(values)
             if (formik.values.password === formik.values.confirmPassword) {
                 const response = await signUpTrainer(values)
                 if (response.status === 200) {

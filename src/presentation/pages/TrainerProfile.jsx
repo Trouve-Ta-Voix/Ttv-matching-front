@@ -15,6 +15,7 @@ import Arrow from "../atoms/Arrow/Arrow"
 import UpdatePasswordModal from "../organisms/UpdatePasswordModal/UpdatePasswordModal"
 
 const TrainerProfile = () => {
+    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { userToken, userData, setUserData } = useContext(UserContext)
     const navigate = useNavigate()
@@ -44,6 +45,8 @@ const TrainerProfile = () => {
                 phone: userData.phone,
                 role: userData.role,
             })
+        } else {
+            navigate("/")
         }
         // eslint-disable-next-line
     }, [userData])

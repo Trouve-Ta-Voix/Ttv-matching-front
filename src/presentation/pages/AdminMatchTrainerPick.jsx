@@ -16,6 +16,7 @@ import WaitingForEventClassCard from "../organisms/WaitingForEventClassCard/Wait
 const AdminMatchTrainerPick = () => {
     const params = useParams()
     const navigate = useNavigate()
+
     const { userData, userToken } = useContext(UserContext)
     const [availability, setAvailability] = useState(null)
     const availabilityId = params.availabilityId
@@ -37,6 +38,14 @@ const AdminMatchTrainerPick = () => {
     }, [userToken])
 
     if (!availability) {
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
+    if (!userData) {
+
         return (
             <MainLayout>
                 <CircularProgress />

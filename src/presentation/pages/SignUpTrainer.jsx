@@ -23,14 +23,36 @@ const SignUpTrainer = () => {
             currentAddress: "",
         },
         onSubmit: async (values) => {
-            console.log(values)
             if (formik.values.password === formik.values.confirmPassword) {
+                if (!formik.values.currentAddress) {
+                    alert("Veuillez entrer une adresse")
+                    return
+                }
+
                 const response = await signUpTrainer(values)
                 if (response.status === 200) {
                     alert("Votre compte a été créé")
                     navigate("/")
                 } else {
-                    alert("Veuillez rééssayer")
+                    if (response?.response[0]?.msg) {
+                        switch (response.response[0].msg) {
+                            case "Pseudo length isn't right":
+                                alert("Vérifiez le nom et le prénom")
+                            case "Invalid value":
+                                alert("Vérifiez le numéro de téléphone")
+                                break
+                            case "Password is too short":
+                                alert("Le mot de passe est trop court")
+                                break
+                            case "Email isn't right":
+                                alert("L'email n'est pas correct")
+                                break
+                        }
+                    } else if (response.status === 500) {
+                        alert("Erreur interne du serveur")
+                    } else if (response.status === 409) {
+                        alert("Cet email est déjà pris")
+                    }
                 }
             } else {
                 alert("Les mots de passe ne correspondent pas")

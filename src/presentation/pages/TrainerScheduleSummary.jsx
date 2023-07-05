@@ -19,7 +19,7 @@ import {
 
 const TrainerScheduleSummary = () => {
     const navigate = useNavigate()
-    const { userToken, userData } = useContext(UserContext)
+    const { userToken } = useContext(UserContext)
 
     const [availabilities, setAvailabilities] = useState([])
     const [isCreateAvailabilityModalOpen, setIsCreateAvailabilityModalOpen] =
@@ -35,18 +35,13 @@ const TrainerScheduleSummary = () => {
         }
         // eslint-disable-next-line
     }, [userToken])
-    useEffect(() => {
-        if (!userData) {
-            navigate("/")
-        }
-        // eslint-disable-next-line
-    }, [userData])
 
     ////////////  API CALLS  ////////////
 
     const fetchTrainerAvailabilities = async () => {
         const response = await getTrainerAvailabilities(userToken)
         if (response) {
+            response.sort((a, b) => a.startMinute - b.startMinute)
             setAvailabilities(response)
         }
     }

@@ -27,17 +27,6 @@ const AdminClass = () => {
     const [c, setC] = useState(null)
     const [rangeValue, setRangeValue] = useState(45)
 
-
-    useEffect(() => {
-        if (!userData) {
-            navigate("/")
-        }
-        // eslint-disable-next-line
-    }, [userData])
-
-
-
-
     const getClass = async () => {
         if (userToken) {
             const c = await getAdminClass(userToken, classId)

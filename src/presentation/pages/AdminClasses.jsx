@@ -45,13 +45,6 @@ const AdminClasses = () => {
         // eslint-disable-next-line
     }, [userToken])
 
-    useEffect(() => {
-        if (!userData) {
-            navigate("/")
-        }
-        // eslint-disable-next-line
-    }, [userData])
-
     // render
     if (!userData) {
         return (
@@ -126,11 +119,10 @@ const AdminClasses = () => {
                             gap: "24px",
                         }}
                     >
-                        {actives
-                            ? actives.map((c) => (
-                                  <ActiveClassCard infos={c} key={c.id} />
-                              ))
-                            : "Wololo"}
+                        {actives &&
+                            actives.map((c) => (
+                                <ActiveClassCard infos={c} key={c.id} />
+                            ))}
                     </Container>
                 </Container>
                 <Container>
@@ -157,19 +149,18 @@ const AdminClasses = () => {
                             gap: "24px",
                         }}
                     >
-                        {inactives
-                            ? inactives.map((event) => {
-                                  return (
-                                      <InactiveClassCard
-                                          infos={event}
-                                          key={event.id}
-                                          //   onClick={() => {
-                                          //       navigate(`./${event.id}`)
-                                          //   }}
-                                      />
-                                  )
-                              })
-                            : "Wololo"}
+                        {inactives &&
+                            inactives.map((event) => {
+                                return (
+                                    <InactiveClassCard
+                                        infos={event}
+                                        key={event.id}
+                                        //   onClick={() => {
+                                        //       navigate(`./${event.id}`)
+                                        //   }}
+                                    />
+                                )
+                            })}
                     </Container>
                 </Container>
             </MainLayout>

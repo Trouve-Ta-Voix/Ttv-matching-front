@@ -11,6 +11,8 @@ const UserContextProvider = (props) => {
         const userData = await getUserData(token)
         if (userData) {
             setUserData(userData)
+        } else {
+            setUserData(null)
         }
     }
 

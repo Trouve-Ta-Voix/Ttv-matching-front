@@ -17,7 +17,6 @@ const AdminProfile = () => {
     const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { userToken, userData, setUserData } = useContext(UserContext)
-    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -43,10 +42,7 @@ const AdminProfile = () => {
                 email: userData.email,
                 role: userData.role,
             })
-        } else {
-            navigate("/")
         }
-
         // eslint-disable-next-line
     }, [userData])
     const openModal = () => {

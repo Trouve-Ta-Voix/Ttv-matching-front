@@ -10,7 +10,6 @@ import NotFound from "./presentation/pages/NotFound"
 
 import AdminClasses from "./presentation/pages/AdminClasses"
 import AdminProfile from "./presentation/pages/AdminProfile"
-import AdminValidationAccounts from "./presentation/pages/AdminValidationAccounts"
 import AdminClass from "./presentation/pages/AdminClass"
 
 import TeacherClasses from "./presentation/pages/TeacherClasses"
@@ -36,10 +35,6 @@ const App = () => {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/admin/classes" element={<AdminClasses />} />
                     <Route path="/admin/profile" element={<AdminProfile />} />
-                    <Route
-                        path="/admin/validation/accounts"
-                        element={<AdminValidationAccounts />}
-                    />
                     <Route
                         path="/admin/classes/:classId"
                         element={<AdminClass />}

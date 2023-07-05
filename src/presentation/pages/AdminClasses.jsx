@@ -44,6 +44,14 @@ const AdminClasses = () => {
         // eslint-disable-next-line
     }, [userToken])
 
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
+
+    // render
     if (!userData) {
         return (
             <MainLayout>

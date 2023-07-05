@@ -12,6 +12,13 @@ import RoleLabel from "../atoms/RoleLabel/RoleLabel"
 const AdminMatchTrainerPick = () => {
     const navigate = useNavigate()
     const { userData } = useContext(UserContext)
+
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
     if (!userData) {
         return (
             <MainLayout>

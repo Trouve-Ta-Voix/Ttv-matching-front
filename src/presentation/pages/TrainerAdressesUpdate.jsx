@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 
 import { getTrainerAddress } from "../../services/api/Profile"
@@ -14,7 +14,8 @@ import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout
 import Logo from "../atoms/Logo/Logo"
 
 const TrainerAdresses = () => {
-    const { userToken } = useContext(UserContext)
+    const navigate = useNavigate()
+    const { userToken, userData } = useContext(UserContext)
     const [currentAddress, setCurrentAddress] = useState([])
     const { id } = useParams()
 
@@ -41,6 +42,12 @@ const TrainerAdresses = () => {
         fetchAddress()
         // eslint-disable-next-line
     }, [userToken])
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
 
     const handleAddressChange = (data) => {
         formik.setFieldValue("currentAddress", data)

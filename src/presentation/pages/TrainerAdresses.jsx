@@ -17,7 +17,7 @@ import TrainerAddressCreateModal from "../organisms/TrainerAddressCreateModal/Tr
 import Logo from "../atoms/Logo/Logo"
 
 const TrainerAdresses = () => {
-    const { userToken } = useContext(UserContext)
+    const { userToken, userData } = useContext(UserContext)
     const [currentAddresses, setCurrentAdresses] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -34,6 +34,12 @@ const TrainerAdresses = () => {
         fetchAddress()
         // eslint-disable-next-line
     }, [userToken])
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
 
     const handleDeleteClick = async (id) => {
         const request = await deleteTrainerAddress(userToken, id)
@@ -54,7 +60,7 @@ const TrainerAdresses = () => {
             <Logo position="inline" size="big" />
             <Title title="Zones d'actions" />
             <Paragraph content="Renseignez ici vos adresses, correspondant à votre périmètre d'activité" />
-            <SeparatorLine color="blue" />            
+            <SeparatorLine color="blue" />
             <AvailibilityLayout>
                 {currentAddresses?.map((currentAddress, i) => {
                     return (

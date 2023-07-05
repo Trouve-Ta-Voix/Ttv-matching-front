@@ -19,11 +19,16 @@ import { doMatch } from "../../services/api/doMatch"
 const AdminClass = () => {
     const navigate = useNavigate()
     const { classId } = useParams()
-    // const navigate = useNavigate()
+
     const { userData, userToken } = useContext(UserContext)
     const [c, setC] = useState(null)
 
-    console.log(classId)
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
 
     const getClass = async () => {
         if (userToken) {
@@ -44,7 +49,6 @@ const AdminClass = () => {
 
     const destroyEvent = async (eventId) => {
         await deleteEvent(userToken, eventId)
-        console.log("yoyo")
         getClass()
     }
 

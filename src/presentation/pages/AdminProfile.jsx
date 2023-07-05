@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
 import { updateUserInfo } from "../../services/api/User"
 import { useFormik } from "formik"
+import { useNavigate } from "react-router-dom"
 
 import CircularProgress from "@mui/material/CircularProgress"
 import MainLayout from "../layouts/MainLayout/MainLayout"
@@ -11,8 +11,10 @@ import Logo from "../atoms/Logo/Logo"
 import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
 import UpdatePasswordModal from "../organisms/UpdatePasswordModal/UpdatePasswordModal"
+import Arrow from "../atoms/Arrow/Arrow"
 
 const AdminProfile = () => {
+    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { userToken, userData, setUserData } = useContext(UserContext)
     const navigate = useNavigate()
@@ -41,7 +43,10 @@ const AdminProfile = () => {
                 email: userData.email,
                 role: userData.role,
             })
+        } else {
+            navigate("/")
         }
+
         // eslint-disable-next-line
     }, [userData])
     const openModal = () => {
@@ -66,6 +71,10 @@ const AdminProfile = () => {
         return (
             <MainLayout>
                 <Logo position="inline" size="big" />
+                <Arrow
+                    onClick={() => navigate("/profile")}
+                    orientation="left"
+                />
                 <Title title="Profil" />
                 <Form
                     onSubmit={formik.handleSubmit}

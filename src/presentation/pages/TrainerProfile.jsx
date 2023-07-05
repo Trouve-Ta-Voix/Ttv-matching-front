@@ -11,9 +11,11 @@ import Form from "../organisms/Form/Form"
 import Logo from "../atoms/Logo/Logo"
 import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
+import Arrow from "../atoms/Arrow/Arrow"
 import UpdatePasswordModal from "../organisms/UpdatePasswordModal/UpdatePasswordModal"
 
 const TrainerProfile = () => {
+    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { userToken, userData, setUserData } = useContext(UserContext)
     const navigate = useNavigate()
@@ -44,6 +46,8 @@ const TrainerProfile = () => {
                 phone: userData.phone,
                 role: userData.role,
             })
+        } else {
+            navigate("/")
         }
         // eslint-disable-next-line
     }, [userData])
@@ -70,6 +74,10 @@ const TrainerProfile = () => {
         return (
             <MainLayout>
                 <Logo />
+                <Arrow
+                    onClick={() => navigate("/profile")}
+                    orientation="left"
+                />
                 <Title title="Profil" />
                 <Form
                     onSubmit={formik.handleSubmit}

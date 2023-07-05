@@ -24,7 +24,6 @@ const TrainerActionAreaCard = ({
                 )}
                 <img
                     onClick={() => {
-                        console.log(index)
                         onPenClick(index)
                     }}
                     src={Pencil}
@@ -33,7 +32,6 @@ const TrainerActionAreaCard = ({
                 />
                 <img
                     onClick={() => {
-                        console.log("Delete Address")
                         onTrashCanClick(index)
                     }}
                     src={Trash}

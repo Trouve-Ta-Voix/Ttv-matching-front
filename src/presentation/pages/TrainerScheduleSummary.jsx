@@ -1,10 +1,12 @@
 import { useContext, useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../services/context/user"
 
 import MainLayout from "../layouts/MainLayout/MainLayout"
 import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
 import Logo from "../atoms/Logo/Logo"
+import Arrow from "../atoms/Arrow/Arrow"
 import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout"
 import TrainerAvailabilityCard from "../organisms/TrainerAvailabilityCard/TrainerAvailabilityCard"
 import AddAvailabilityModal from "../organisms/AddAvailabilityModal/AddAvailabilityModal"
@@ -16,7 +18,8 @@ import {
 } from "../../services/api/Profile"
 
 const TrainerScheduleSummary = () => {
-    const { userToken } = useContext(UserContext)
+    const navigate = useNavigate()
+    const { userToken, userData } = useContext(UserContext)
 
     const [availabilities, setAvailabilities] = useState([])
     const [isCreateAvailabilityModalOpen, setIsCreateAvailabilityModalOpen] =
@@ -32,6 +35,12 @@ const TrainerScheduleSummary = () => {
         }
         // eslint-disable-next-line
     }, [userToken])
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
 
     ////////////  API CALLS  ////////////
 
@@ -63,8 +72,6 @@ const TrainerScheduleSummary = () => {
         }
     }
 
-    ////////////  ACTIONS ////////////
-
     const openCreateAvailabilityModal = () => {
         setIsCreateAvailabilityModalOpen(true)
     }
@@ -85,6 +92,7 @@ const TrainerScheduleSummary = () => {
     return (
         <MainLayout>
             <Logo position="inline" size="big" />
+            <Arrow onClick={() => navigate("/profile")} orientation="left" />
             <Title title="Mes disponibilités" />
             <AvailibilityLayout>
                 {loading ? (

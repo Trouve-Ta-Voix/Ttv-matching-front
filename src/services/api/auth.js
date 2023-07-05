@@ -11,6 +11,7 @@ const login = async ({ email, password }) => {
         }
     )
     const response = await request.json()
+
     return response
 }
 

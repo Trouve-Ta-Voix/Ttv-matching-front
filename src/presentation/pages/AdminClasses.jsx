@@ -10,6 +10,7 @@ import Button from "../atoms/Button/Button"
 import RoleLabel from "../atoms/RoleLabel/RoleLabel"
 import Subtitle from "../atoms/Subtitle/Subtitle"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
+import Arrow from "../atoms/Arrow/Arrow"
 
 import ActiveClassCard from "../organisms/ActiveClassCard/ActiveClassCard"
 import InactiveClassCard from "../organisms/InactiveClassCard/InactiveClassCard"
@@ -44,6 +45,14 @@ const AdminClasses = () => {
         // eslint-disable-next-line
     }, [userToken])
 
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
+
+    // render
     if (!userData) {
         return (
             <MainLayout>
@@ -54,6 +63,12 @@ const AdminClasses = () => {
         return (
             <MainLayout>
                 <Logo position="inline" size="big" />
+                <Arrow
+                    onClick={() => {
+                        navigate("/profile")
+                    }}
+                    orientation="left"
+                />
                 <Container
                     sx={{
                         display: "flex",

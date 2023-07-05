@@ -4,6 +4,12 @@
     gap: 24px;
 }
 
+.form-error {
+    color: red;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+}
+
 @media screen and (max-width: 768px) {
     .form {
         justify-content: center;

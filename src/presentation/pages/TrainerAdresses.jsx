@@ -15,9 +15,10 @@ import AvailibilityLayout from "../layouts/AvailibilityLayout/AvailibilityLayout
 import TrainerActionAreaCard from "../organisms/TrainerActionAreaCard/TrainerActionAreaCard"
 import TrainerAddressCreateModal from "../organisms/TrainerAddressCreateModal/TrainerAddressCreateModal"
 import Logo from "../atoms/Logo/Logo"
+import Arrow from "../atoms/Arrow/Arrow"
 
 const TrainerAdresses = () => {
-    const { userToken } = useContext(UserContext)
+    const { userToken, userData } = useContext(UserContext)
     const [currentAddresses, setCurrentAdresses] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -34,6 +35,12 @@ const TrainerAdresses = () => {
         fetchAddress()
         // eslint-disable-next-line
     }, [userToken])
+    useEffect(() => {
+        if (!userData) {
+            navigate("/")
+        }
+        // eslint-disable-next-line
+    }, [userData])
 
     const handleDeleteClick = async (id) => {
         const request = await deleteTrainerAddress(userToken, id)
@@ -52,6 +59,7 @@ const TrainerAdresses = () => {
     return (
         <MainLayout>
             <Logo position="inline" size="big" />
+            <Arrow onClick={() => navigate("/profile")} orientation="left" />
             <Title title="Zones d'actions" />
             <Paragraph content="Renseignez ici vos adresses, correspondant à votre périmètre d'activité" />
             <SeparatorLine color="blue" />

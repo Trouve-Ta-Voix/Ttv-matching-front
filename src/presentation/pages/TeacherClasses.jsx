@@ -13,13 +13,15 @@ import Title from "../atoms/Title/Title"
 import Button from "../atoms/Button/Button"
 import SeparatorLine from "../atoms/Line/SeparatorLine"
 import Paragraph from "../atoms/Paragraph/Paragraph"
+import Arrow from "../atoms/Arrow/Arrow"
 import TeacherClassCard from "../molecules/TeacherClassCard/TeacherClassCard"
 import ClassAvailabilitiesWrapper from "../organisms/ClassAvailabilitiesWrapper/ClassAvailabilitiesWrapper"
 import ClassesLayout from "../layouts/ClassesLayout/ClassesLayout"
 import AddClassModal from "../organisms/AddClassModal/AddClassModal"
 
 const TeacherClasses = () => {
-    const { userToken } = useContext(UserContext)
+    const { userToken, userData } = useContext(UserContext)
+
     const [currentClasses, setCurrentClasses] = useState([])
     const [currentSchool, setCurrentSchool] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -51,12 +53,13 @@ const TeacherClasses = () => {
         // eslint-disable-next-line
     }, [userToken])
     useEffect(() => {
-        if (currentSchool) {
-            console.log(currentSchool)
-            fetchClasses()
+        if (!userData) {
+            navigate("/")
         }
         // eslint-disable-next-line
-    }, [currentSchool])
+    }, [userData])
+
+
 
     const handleEyeClick = (index) => {
         const updateClasses = [...currentClasses]
@@ -93,6 +96,10 @@ const TeacherClasses = () => {
             return (
                 <MainLayout>
                     <Logo />
+                    <Arrow
+                        onClick={() => navigate("/profile")}
+                        orientation="left"
+                    />
                     <Title title="Mes classes" />
                     <Paragraph content="Renseignez ici vos classes" />
                     <SeparatorLine color="blue" />

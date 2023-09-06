@@ -17,7 +17,6 @@ const AdminProfile = () => {
     const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { userToken, userData, setUserData } = useContext(UserContext)
-    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
